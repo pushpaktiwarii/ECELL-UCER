@@ -33,13 +33,20 @@ window.addEventListener('scroll', () => {
     lastScrollTop = scrollTop;
 }, { passive: true });
 
-// Mobile Menu Toggle
+// Enhanced Mobile Menu Toggle with Better UX
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
+    
+    // Prevent body scroll when menu is open
+    if (navMenu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
 });
 
 // Close mobile menu when clicking on a link
@@ -47,22 +54,63 @@ document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
+        document.body.style.overflow = '';
     });
 });
 
-// Smooth Scrolling for Navigation Links
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Smooth Scrolling for Navigation Links with Mobile Offset
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            const offset = window.innerWidth <= 768 ? 80 : 100;
+            const targetPosition = target.offsetTop - offset;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
         }
     });
 });
+
+// Mobile Touch Optimizations
+if ('ontouchstart' in window) {
+    // Add touch feedback to buttons
+    document.querySelectorAll('.btn, .nav-link, .social-links a').forEach(element => {
+        element.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.95)';
+        });
+        
+        element.addEventListener('touchend', function() {
+            this.style.transform = '';
+        });
+    });
+    
+    // Optimize scroll performance on mobile
+    let ticking = false;
+    function updateScroll() {
+        // Mobile-specific scroll optimizations
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateScroll);
+            ticking = true;
+        }
+    }, { passive: true });
+}
 
 // Counter Animation
 const observerOptions = {
@@ -129,6 +177,7 @@ window.addEventListener('scroll', () => {
 const typingText = document.querySelector('.typing-text');
 if (typingText) {
     const texts = [
+        'Accelerate Your Journey!',
         'Start Small',
         'Dream Big',
         'Act Now!'
@@ -171,7 +220,7 @@ if (typingText) {
     setTimeout(typeWriter, 1000);
 }
 
-// Contact Form Submission
+// Contact Form Submission with Mobile Optimization
 const contactForm = document.querySelector('.contact-form form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -194,14 +243,19 @@ if (contactForm) {
     });
 }
 
-// Ripple Effect for Buttons
+// Enhanced Ripple Effect for Buttons with Mobile Support
 document.querySelectorAll('.btn').forEach(button => {
     button.addEventListener('click', function(e) {
         const ripple = document.createElement('span');
         const rect = this.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
+        
+        // Handle both mouse and touch events
+        const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : rect.width / 2);
+        const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : rect.height / 2);
+        
+        const x = clientX - rect.left - size / 2;
+        const y = clientY - rect.top - size / 2;
         
         ripple.style.width = ripple.style.height = size + 'px';
         ripple.style.left = x + 'px';
@@ -237,15 +291,29 @@ window.addEventListener('scroll', () => {
     progressBar.style.width = scrollPercent + '%';
 }, { passive: true });
 
-// Enhanced Card Hover Effects
+// Enhanced Card Hover Effects with Mobile Support
 document.querySelectorAll('.process-card, .initiative-card, .event-card, .team-member').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px) scale(1.02)';
-    });
+    // Only add hover effects on devices that support hover
+    if (window.matchMedia('(hover: hover)').matches) {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    }
     
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-    });
+    // Add touch feedback for mobile
+    if ('ontouchstart' in window) {
+        card.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+        });
+        
+        card.addEventListener('touchend', function() {
+            this.style.transform = '';
+        });
+    }
 });
 
 // Text Reveal Animation
@@ -266,7 +334,7 @@ textElements.forEach(element => {
     textObserver.observe(element);
 });
 
-// Scroll to Top Button
+// Enhanced Scroll to Top Button with Mobile Optimization
 const scrollToTopBtn = document.createElement('button');
 scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
 scrollToTopBtn.style.cssText = `
@@ -287,7 +355,17 @@ scrollToTopBtn.style.cssText = `
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
     transition: all 0.3s ease;
     z-index: 1000;
+    touch-action: manipulation;
 `;
+
+// Adjust position for mobile
+if (window.innerWidth <= 768) {
+    scrollToTopBtn.style.bottom = '20px';
+    scrollToTopBtn.style.right = '20px';
+    scrollToTopBtn.style.width = '45px';
+    scrollToTopBtn.style.height = '45px';
+    scrollToTopBtn.style.fontSize = '1rem';
+}
 
 document.body.appendChild(scrollToTopBtn);
 
@@ -306,8 +384,13 @@ window.addEventListener('scroll', () => {
     }
 }, { passive: true });
 
-// Particle Background Effect (Optimized)
+// Particle Background Effect (Optimized for Mobile)
 const createParticle = () => {
+    // Reduce particles on mobile for better performance
+    if (window.innerWidth <= 768 && Math.random() > 0.3) {
+        return;
+    }
+    
     const particle = document.createElement('div');
     particle.style.cssText = `
         position: fixed;
@@ -337,8 +420,9 @@ const createParticle = () => {
     };
 };
 
-// Create particles at intervals
-setInterval(createParticle, 2000);
+// Create particles at intervals (reduced frequency on mobile)
+const particleInterval = window.innerWidth <= 768 ? 4000 : 2000;
+setInterval(createParticle, particleInterval);
 
 // Performance optimization: Throttle scroll events
 function throttle(func, limit) {
@@ -359,4 +443,78 @@ const throttledScrollHandler = throttle(() => {
     // Scroll-based animations can be added here
 }, 16);
 
-window.addEventListener('scroll', throttledScrollHandler, { passive: true }); 
+window.addEventListener('scroll', throttledScrollHandler, { passive: true });
+
+// Mobile-specific optimizations
+if (window.innerWidth <= 768) {
+    // Reduce animation complexity on mobile
+    document.documentElement.style.setProperty('--animation-duration', '0.3s');
+    
+    // Optimize images for mobile
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.setAttribute('loading', 'lazy');
+    });
+    
+    // Add mobile-specific touch gestures
+    let touchStartY = 0;
+    let touchEndY = 0;
+    
+    document.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    
+    document.addEventListener('touchend', (e) => {
+        touchEndY = e.changedTouches[0].clientY;
+        handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartY - touchEndY;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            // Handle swipe gestures if needed
+        }
+    }
+}
+
+// Handle orientation change
+window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+        // Recalculate positions and sizes after orientation change
+        if (window.innerWidth <= 768) {
+            scrollToTopBtn.style.bottom = '20px';
+            scrollToTopBtn.style.right = '20px';
+        } else {
+            scrollToTopBtn.style.bottom = '30px';
+            scrollToTopBtn.style.right = '30px';
+        }
+    }, 100);
+});
+
+// Add CSS for ripple effect
+const style = document.createElement('style');
+style.textContent = `
+    .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(0);
+        animation: ripple-animation 0.6s linear;
+        pointer-events: none;
+    }
+    
+    @keyframes ripple-animation {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+    
+    .btn {
+        position: relative;
+        overflow: hidden;
+    }
+`;
+document.head.appendChild(style); 
