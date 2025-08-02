@@ -182,6 +182,29 @@
             border-radius: 10px;
             margin-bottom: 20px;
             border: 1px solid #c3e6cb;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        
+        .success-message i {
+            font-size: 1.2em;
+            color: #28a745;
+        }
+        
+        .success-message.show {
+            animation: slideInDown 0.5s ease-out;
+        }
+        
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         @media (max-width: 768px) {
@@ -237,7 +260,6 @@
                     </div>
                     
                     <form id="registrationForm" action="https://formsubmit.co/ecellucer@gmail.com" method="POST">
-                        <input type="hidden" name="_next" value="/thankyou.html">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_subject" value="New Event Registration - Edtech Startup Padhle Akshay">
                         <input type="hidden" name="_template" value="table">
@@ -382,20 +404,53 @@
             });
         });
 
-        // Show loading state on form submission
-        document.getElementById('registrationForm').addEventListener('submit', function() {
+        // Handle form submission with AJAX to prevent page redirect
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            
             const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
             submitBtn.disabled = true;
             
-            // Show success message immediately for better UX
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'flex';
-                document.getElementById('successMessage').scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-            }, 1000);
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Submit form using fetch
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message with animation
+                    const successMessage = document.getElementById('successMessage');
+                    successMessage.style.display = 'flex';
+                    successMessage.classList.add('show');
+                    successMessage.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Show error message or fallback
+                alert('There was an error submitting your registration. Please try again.');
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
         });
     </script>
 </body>

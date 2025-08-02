@@ -245,40 +245,107 @@ function setButtonLoading(button, isLoading) {
     }
 }
 
-// Contact Form Handling with FormSubmit
+// Contact Form Handling with AJAX to prevent page redirect
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+        
         const submitBtn = this.querySelector('button[type="submit"]');
-        setButtonLoading(submitBtn, true);
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
         
-        // FormSubmit will handle the submission and redirect automatically
-        console.log('Contact form submitted via FormSubmit');
+        // Get form data
+        const formData = new FormData(this);
         
-        // FormSubmit will redirect to contact-thankyou.html after submission
+        // Submit form using fetch
+        fetch(this.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                // Show success message with animation
+                const successMessage = document.getElementById('contactSuccessMessage');
+                successMessage.style.display = 'flex';
+                successMessage.classList.add('show');
+                successMessage.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            } else {
+                throw new Error('Form submission failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Show error message or fallback
+            alert('There was an error sending your message. Please try again.');
+            
+            // Reset button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        });
     });
 }
 
-// Newsletter Form Handling with FormSubmit
+// Newsletter Form Handling with AJAX to prevent page redirect
 const newsletterForm = document.getElementById('newsletterForm');
 if (newsletterForm) {
     newsletterForm.addEventListener('submit', function(e) {
-        const submitBtn = this.querySelector('button[type="submit"]');
+        e.preventDefault(); // Prevent default form submission
         
-        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
         submitBtn.disabled = true;
         
-        // FormSubmit will handle the submission automatically
-        console.log('Newsletter form submitted via FormSubmit');
+        // Get form data
+        const formData = new FormData(this);
         
-        // Show success message immediately for better UX
-        setTimeout(() => {
-            showSuccessMessage('newsletterSuccessMessage');
+        // Submit form using fetch
+        fetch(this.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                // Show success message with animation
+                const successMessage = document.getElementById('newsletterSuccessMessage');
+                successMessage.style.display = 'flex';
+                successMessage.classList.add('show');
+                successMessage.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Reset form
             this.reset();
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            } else {
+                throw new Error('Form submission failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Show error message or fallback
+            alert('There was an error subscribing to the newsletter. Please try again.');
+            
+            // Reset button
+            submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-        }, 1000);
+        });
     });
 }
 
@@ -478,7 +545,29 @@ if (window.innerWidth <= 768) {
 
 
 
-// Add CSS for ripple effect
+// News Banner Functionality
+function closeBanner() {
+    const banner = document.getElementById('newsBanner');
+    if (banner) {
+        banner.style.animation = 'slideOutRight 0.5s ease-out forwards';
+        setTimeout(() => {
+            banner.style.display = 'none';
+        }, 500);
+        
+        // Store in localStorage so it doesn't show again in this session
+        localStorage.setItem('bannerClosed', 'true');
+    }
+}
+
+// Check if banner should be shown
+document.addEventListener('DOMContentLoaded', function() {
+    const banner = document.getElementById('newsBanner');
+    if (banner && localStorage.getItem('bannerClosed') === 'true') {
+        banner.style.display = 'none';
+    }
+});
+
+// Add CSS for ripple effect and animations
 const style = document.createElement('style');
 style.textContent = `
     .ripple {
@@ -500,6 +589,23 @@ style.textContent = `
     .btn {
         position: relative;
         overflow: hidden;
+    }
+    
+    .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .news-item {
+        animation-fill-mode: both;
     }
 `;
 document.head.appendChild(style); 
