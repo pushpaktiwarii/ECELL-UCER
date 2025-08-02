@@ -559,11 +559,73 @@ function closeBanner() {
     }
 }
 
-// Check if banner should be shown
+// Banner visibility control - ONLY on home page with scroll behavior
 document.addEventListener('DOMContentLoaded', function() {
-    const banner = document.getElementById('newsBanner');
-    if (banner && localStorage.getItem('bannerClosed') === 'true') {
-        banner.style.display = 'none';
+    const currentPage = window.location.pathname;
+    const isHomePage = currentPage === '/' || currentPage === '/index.html' || currentPage === '';
+    
+    console.log('Current page:', currentPage);
+    console.log('Is home page:', isHomePage);
+    
+    // ONLY add home-page class if it's actually the home page
+    if (isHomePage) {
+        document.body.classList.add('home-page');
+        console.log('Added home-page class to body');
+        
+        // Only handle banner on home page
+        const banner = document.getElementById('newsBanner');
+        if (banner) {
+            if (localStorage.getItem('bannerClosed') === 'true') {
+                banner.style.display = 'none';
+                console.log('Banner hidden - user closed it');
+            } else {
+                banner.style.display = 'block';
+                console.log('Banner shown - home page and not closed');
+                
+                // Add scroll-based visibility
+                let lastScrollTop = 0;
+                const scrollThreshold = 100; // Hide after 100px scroll
+                
+                window.addEventListener('scroll', function() {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (scrollTop > scrollThreshold) {
+                        // Hide banner when scrolled down
+                        banner.style.opacity = '0';
+                        banner.style.transform = 'translateX(100%)';
+                        banner.style.pointerEvents = 'none';
+                    } else {
+                        // Show banner when at top
+                        banner.style.opacity = '1';
+                        banner.style.transform = 'translateX(0)';
+                        banner.style.pointerEvents = 'auto';
+                    }
+                    
+                    lastScrollTop = scrollTop;
+                }, { passive: true });
+            }
+        }
+    } else {
+        console.log('Not home page - banner will be hidden by CSS');
+        // Ensure banner is hidden on non-home pages
+        const banner = document.getElementById('newsBanner');
+        if (banner) {
+            banner.style.display = 'none';
+        }
+    }
+    
+    // Add click functionality to scroll arrow
+    const scrollArrow = document.querySelector('.scroll-arrow');
+    if (scrollArrow) {
+        scrollArrow.addEventListener('click', function() {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     }
 });
 
