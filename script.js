@@ -177,7 +177,6 @@ window.addEventListener('scroll', () => {
 const typingText = document.querySelector('.typing-text');
 if (typingText) {
     const texts = [
-        'Accelerate Your Journey!',
         'Start Small',
         'Dream Big',
         'Act Now!'
@@ -220,20 +219,85 @@ if (typingText) {
     setTimeout(typeWriter, 1000);
 }
 
-// Contact Form Submission with Mobile Optimization
-const contactForm = document.querySelector('.contact-form form');
+// Form Handling Functions
+function showSuccessMessage(elementId, message) {
+    const successElement = document.getElementById(elementId);
+    if (successElement) {
+        successElement.style.display = 'flex';
+        successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+            successElement.style.display = 'none';
+        }, 5000);
+    }
+}
+
+function setButtonLoading(button, isLoading) {
+    if (isLoading) {
+        button.classList.add('btn-loading');
+        button.disabled = true;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    } else {
+        button.classList.remove('btn-loading');
+        button.disabled = false;
+        button.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+    }
+}
+
+// Contact Form Handling with FormSubmit
+const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', function(e) {
+        const submitBtn = this.querySelector('button[type="submit"]');
+        setButtonLoading(submitBtn, true);
+        
+        // FormSubmit will handle the submission and redirect automatically
+        console.log('Contact form submitted via FormSubmit');
+        
+        // FormSubmit will redirect to contact-thankyou.html after submission
+    });
+}
+
+// Newsletter Form Handling with FormSubmit
+const newsletterForm = document.getElementById('newsletterForm');
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+        const submitBtn = this.querySelector('button[type="submit"]');
+        
+        // Show loading state
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        submitBtn.disabled = true;
+        
+        // FormSubmit will handle the submission automatically
+        console.log('Newsletter form submitted via FormSubmit');
+        
+        // Show success message immediately for better UX
+        setTimeout(() => {
+            showSuccessMessage('newsletterSuccessMessage');
+            this.reset();
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+            submitBtn.disabled = false;
+        }, 1000);
+    });
+}
+
+
+
+// Enhanced Contact Form Submission (fallback for any forms without FormSubmit)
+const existingContactForm = document.querySelector('.contact-form form');
+if (existingContactForm && !existingContactForm.id) {
+    existingContactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
         // Show success message
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const submitBtn = existingContactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Message Sent!';
         submitBtn.style.background = '#28a745';
         
         // Reset form
-        contactForm.reset();
+        existingContactForm.reset();
         
         // Reset button after 3 seconds
         setTimeout(() => {
@@ -270,26 +334,7 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 });
 
-// Scroll Progress Indicator
-const progressBar = document.createElement('div');
-progressBar.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    z-index: 9999;
-    transition: width 0.1s ease;
-`;
-document.body.appendChild(progressBar);
 
-window.addEventListener('scroll', () => {
-    const scrollTop = document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / scrollHeight) * 100;
-    progressBar.style.width = scrollPercent + '%';
-}, { passive: true });
 
 // Enhanced Card Hover Effects with Mobile Support
 document.querySelectorAll('.process-card, .initiative-card, .event-card, .team-member').forEach(card => {
@@ -334,55 +379,7 @@ textElements.forEach(element => {
     textObserver.observe(element);
 });
 
-// Enhanced Scroll to Top Button with Mobile Optimization
-const scrollToTopBtn = document.createElement('button');
-scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-scrollToTopBtn.style.cssText = `
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    touch-action: manipulation;
-`;
 
-// Adjust position for mobile
-if (window.innerWidth <= 768) {
-    scrollToTopBtn.style.bottom = '20px';
-    scrollToTopBtn.style.right = '20px';
-    scrollToTopBtn.style.width = '45px';
-    scrollToTopBtn.style.height = '45px';
-    scrollToTopBtn.style.fontSize = '1rem';
-}
-
-document.body.appendChild(scrollToTopBtn);
-
-scrollToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        scrollToTopBtn.style.display = 'flex';
-    } else {
-        scrollToTopBtn.style.display = 'none';
-    }
-}, { passive: true });
 
 // Particle Background Effect (Optimized for Mobile)
 const createParticle = () => {
@@ -479,19 +476,7 @@ if (window.innerWidth <= 768) {
     }
 }
 
-// Handle orientation change
-window.addEventListener('orientationchange', () => {
-    setTimeout(() => {
-        // Recalculate positions and sizes after orientation change
-        if (window.innerWidth <= 768) {
-            scrollToTopBtn.style.bottom = '20px';
-            scrollToTopBtn.style.right = '20px';
-        } else {
-            scrollToTopBtn.style.bottom = '30px';
-            scrollToTopBtn.style.right = '30px';
-        }
-    }, 100);
-});
+
 
 // Add CSS for ripple effect
 const style = document.createElement('style');

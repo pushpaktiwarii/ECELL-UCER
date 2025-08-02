@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormSubmit Test - E-Cell UCER</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .test-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+        }
+        
+        .test-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .btn-test {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+        
+        .btn-test:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1><i class="fas fa-check-circle"></i> FormSubmit Test Page</h1>
+        <p>This page helps you test if all forms are properly connected to FormSubmit.</p>
+        
+        <div class="test-section">
+            <h3><i class="fas fa-user-plus"></i> Event Registration Form</h3>
+            <div class="status info">
+                <strong>Status:</strong> Connected to FormSubmit
+            </div>
+            <p><strong>Email:</strong> ecellucer@gmail.com</p>
+            <p><strong>Features:</strong> Auto-response, redirect to thank you page, captcha disabled</p>
+            <a href="register.html" class="btn-test">Test Registration Form</a>
+        </div>
+        
+        <div class="test-section">
+            <h3><i class="fas fa-envelope"></i> Contact Form</h3>
+            <div class="status info">
+                <strong>Status:</strong> Connected to FormSubmit
+            </div>
+            <p><strong>Email:</strong> ecellucer@gmail.com</p>
+            <p><strong>Features:</strong> Auto-response, table template, captcha disabled</p>
+            <a href="index.html#contact" class="btn-test">Test Contact Form</a>
+        </div>
+        
+        <div class="test-section">
+            <h3><i class="fas fa-newspaper"></i> Newsletter Form</h3>
+            <div class="status info">
+                <strong>Status:</strong> Connected to FormSubmit
+            </div>
+            <p><strong>Email:</strong> ecellucer@gmail.com</p>
+            <p><strong>Features:</strong> Auto-response, table template, captcha disabled</p>
+            <a href="index.html" class="btn-test">Test Newsletter Form</a>
+        </div>
+        
+        <div class="test-section">
+            <h3><i class="fas fa-cog"></i> FormSubmit Configuration</h3>
+            <div class="status success">
+                <strong>All Forms Configured:</strong> ✅
+            </div>
+            <ul>
+                <li><strong>Email:</strong> ecellucer@gmail.com</li>
+                <li><strong>Captcha:</strong> Disabled</li>
+                <li><strong>Template:</strong> Table format</li>
+                <li><strong>Auto-response:</strong> Enabled</li>
+                <li><strong>Redirect:</strong> Thank you page (registration form)</li>
+            </ul>
+        </div>
+        
+        <div class="test-section">
+            <h3><i class="fas fa-info-circle"></i> Next Steps</h3>
+            <div class="status info">
+                <strong>Important:</strong> Check your email for FormSubmit activation
+            </div>
+            <ol>
+                <li>Submit a test form from any of the forms above</li>
+                <li>Check your email (ecellucer@gmail.com) for FormSubmit activation email</li>
+                <li>Click the activation link in the email</li>
+                <li>After activation, all future form submissions will be sent directly to your email</li>
+            </ol>
+        </div>
+        
+        <div class="test-section">
+            <h3><i class="fas fa-home"></i> Navigation</h3>
+            <a href="index.html" class="btn-test">Back to Home</a>
+            <a href="register.html" class="btn-test">Registration Form</a>
+            <a href="thankyou.html" class="btn-test">Thank You Page</a>
+        </div>
+    </div>
+</body>
+</html> 

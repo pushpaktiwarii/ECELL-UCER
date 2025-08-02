@@ -192,10 +192,9 @@ body {
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 700;
-    color: white;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     line-height: 1.2;
 }
 
@@ -1162,7 +1161,7 @@ section {
     font-size: 2.5rem;
     font-weight: 700;
     color: #333;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     text-align: center;
     position: relative;
 }
@@ -1179,12 +1178,64 @@ section {
     border-radius: 2px;
 }
 
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
+/* Team Row Styles */
+.team-row {
+    margin-bottom: 4rem;
 }
 
+.team-row:last-child {
+    margin-bottom: 0;
+}
+
+/* Leadership Row - Coordinator */
+.leadership-row {
+    margin-bottom: 5rem;
+}
+
+.leadership-grid {
+    display: flex;
+    justify-content: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.leadership-row .team-member {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.leadership-row .team-member:hover {
+    transform: scale(1.15) translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Management Row - PR & Media Heads */
+.management-row {
+    margin-bottom: 4rem;
+}
+
+.management-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Operations & Creative Row - Event & Operations, Design & Tech Heads */
+.operations-creative-row {
+    margin-bottom: 2rem;
+}
+
+.operations-creative-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Team Member Cards */
 .team-member {
     text-align: center;
     background: white;
@@ -1192,6 +1243,23 @@ section {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    position: relative;
+}
+
+.team-member::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover::before {
+    transform: scaleX(1);
 }
 
 .team-member:hover {
@@ -1203,12 +1271,30 @@ section {
     width: 100%;
     height: 300px;
     overflow: hidden;
+    position: relative;
+}
+
+.member-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.team-member:hover .member-image::after {
+    opacity: 1;
 }
 
 .member-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 25%;
     transition: transform 0.3s ease;
 }
 
@@ -1218,24 +1304,29 @@ section {
 
 .member-info {
     padding: 2rem;
+    background: white;
 }
 
 .member-info h3 {
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 .position {
     color: #667eea;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
+    margin-top: 1.5rem;
 }
 
 .social-links a {
@@ -1248,12 +1339,31 @@ section {
     justify-content: center;
     color: #666;
     transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 1.1rem;
 }
 
 .social-links a:hover {
     background: #667eea;
     color: white;
     transform: translateY(-2px);
+}
+
+/* Individual social icon colors */
+.social-links a[title="WhatsApp"]:hover {
+    background: #25D366;
+}
+
+.social-links a[title="Instagram"]:hover {
+    background: #E4405F;
+}
+
+.social-links a[title="Facebook"]:hover {
+    background: #1877F2;
+}
+
+.social-links a[title="LinkedIn"]:hover {
+    background: #0A66C2;
 }
 
 /* Testimonials Section */
@@ -1587,22 +1697,17 @@ section {
     /* Faculty Advisor Responsive */
     .advisor-card {
         flex-direction: column;
-        text-align: center;
-        padding: 2rem;
+        padding: 1.5rem;
+        gap: 1.5rem;
     }
-
-    .advisor-info {
-        text-align: center;
-    }
-
+    
     .advisor-image {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
     }
-
-    .advisor-title,
-    .core-team-title {
-        font-size: 2rem;
+    
+    .advisor-info h3 {
+        font-size: 1.5rem;
     }
 
     /* Detailed What We Do Responsive */
@@ -1972,19 +2077,32 @@ html {
     }
     
     /* Team Section Mobile */
-    .advisor-card {
+    .advisor-card,
+    .coordinator-card {
         flex-direction: column;
         padding: 1.5rem;
         gap: 1.5rem;
     }
     
-    .advisor-image {
-        width: 120px;
-        height: 120px;
+    .advisor-image,
+    .coordinator-image {
+        width: 150px;
+        height: 150px;
     }
     
-    .advisor-info h3 {
+    .advisor-image img,
+    .coordinator-image img {
+        object-fit: cover;
+        object-position: center 30%;
+    }
+    
+    .advisor-info h3,
+    .coordinator-info h3 {
         font-size: 1.5rem;
+    }
+    
+    .coordinator-position {
+        font-size: 1.1rem;
     }
     
     .advisor-title,
@@ -1997,8 +2115,39 @@ html {
         gap: 2rem;
     }
     
+    .leadership-grid {
+        max-width: 100%;
+    }
+    
+    .leadership-row .team-member {
+        transform: scale(1);
+    }
+    
+    .leadership-row .team-member:hover {
+        transform: scale(1.05) translateY(-5px);
+    }
+    
+    .management-grid,
+    .operations-creative-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 100%;
+    }
+    
+    .team-row {
+        margin-bottom: 3rem;
+    }
+    
+    .leadership-row {
+        margin-bottom: 3rem;
+    }
+    
     .member-image {
         height: 250px;
+    }
+    
+    .member-image img {
+        object-position: center 25%;
     }
     
     .member-info {
@@ -2194,6 +2343,28 @@ html {
     .team-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
+    }
+    
+    .leadership-grid {
+        max-width: 100%;
+    }
+    
+    .leadership-row .team-member {
+        transform: scale(1.05);
+    }
+    
+    .leadership-row .team-member:hover {
+        transform: scale(1.1) translateY(-8px);
+    }
+    
+    .management-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .operations-creative-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
     }
     
     /* Testimonials Tablet */
@@ -2481,5 +2652,170 @@ html {
     .nav-link:active,
     .social-links a:active {
         transform: scale(0.98);
+    }
+} 
+
+/* Newsletter Form Styles */
+.newsletter-form {
+    margin: 1rem 0;
+}
+
+.newsletter-input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.newsletter-input-group input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    background: white;
+    color: #333;
+}
+
+.newsletter-input-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.2);
+}
+
+.newsletter-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.newsletter-btn:hover {
+    background: #5a6fd8;
+}
+
+/* Success Message Styles */
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #c3e6cb;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.success-message i {
+    color: #28a745;
+    font-size: 16px;
+}
+
+/* Form Enhancement Styles */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.btn-primary i {
+    margin-right: 8px;
+}
+
+/* Loading State for Buttons */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 
+
+/* Mobile Responsive Styles for Forms */
+@media (max-width: 768px) {
+    .newsletter-input-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .newsletter-input-group input {
+        padding: 12px 15px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .newsletter-btn {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 16px;
+    }
+    
+    .success-message {
+        font-size: 13px;
+        padding: 12px;
+    }
+    
+    .contact-form {
+        margin-top: 2rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .newsletter-input-group input {
+        font-size: 16px;
+        padding: 10px 12px;
+    }
+    
+    .newsletter-btn {
+        padding: 10px 12px;
+        font-size: 16px;
+    }
+    
+    .success-message {
+        font-size: 12px;
+        padding: 10px;
+    }
+    
+    /* Mobile social icons */
+    .social-links {
+        gap: 0.8rem;
+        margin-top: 1rem;
+    }
+    
+    .social-links a {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+    
+    .social-links a:hover {
+        transform: translateY(-1px);
     }
 } 

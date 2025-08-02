@@ -236,7 +236,14 @@
                         Thank you! Your registration has been submitted successfully. We'll contact you soon with further details.
                     </div>
                     
-                    <form id="registrationForm">
+                    <form id="registrationForm" action="https://formsubmit.co/ecellucer@gmail.com" method="POST">
+                        <input type="hidden" name="_next" value="http://localhost:8000/thankyou.html">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Event Registration - Edtech Startup Padhle Akshay">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_autoresponse" value="Thank you for registering for the Edtech Startup Padhle Akshay event! We have received your registration and will contact you soon with further details. Stay tuned for updates!">
+                        <input type="hidden" name="form_type" value="event_registration">
+                        
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">First Name *</label>
@@ -305,7 +312,7 @@
                         </div>
                         
                         <div class="form-checkbox">
-                            <input type="checkbox" id="notifications" name="notifications">
+                            <input type="checkbox" id="notifications" name="notifications" value="Yes">
                             <label for="notifications">I would like to receive updates about future E-Cell events and opportunities</label>
                         </div>
                         
@@ -362,28 +369,6 @@
             once: true
         });
 
-        // Form submission handling
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show success message
-            document.getElementById('successMessage').style.display = 'block';
-            
-            // Scroll to success message
-            document.getElementById('successMessage').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'center'
-            });
-            
-            // Reset form
-            this.reset();
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'none';
-            }, 5000);
-        });
-
         // Form validation and enhancement
         const inputs = document.querySelectorAll('.form-input, .form-select, .form-textarea');
         
@@ -395,6 +380,22 @@
             input.addEventListener('blur', function() {
                 this.parentElement.style.transform = 'translateY(0)';
             });
+        });
+
+        // Show loading state on form submission
+        document.getElementById('registrationForm').addEventListener('submit', function() {
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            
+            // Show success message immediately for better UX
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'flex';
+                document.getElementById('successMessage').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 1000);
         });
     </script>
 </body>
