@@ -2060,7 +2060,8 @@ html {
     /* Hero Section Mobile */
     .hero {
         min-height: 100vh;
-        padding: 60px 0 20px;
+        padding: 160px 0 20px;
+        align-items: flex-start;
     }
     
     .hero-container {
@@ -2384,6 +2385,11 @@ html {
     }
     
     /* Hero Section Tablet */
+    .hero {
+        padding: 140px 0 60px;
+        align-items: flex-start;
+    }
+    
     .hero-container {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -2654,7 +2660,8 @@ html {
 @media (max-width: 768px) and (orientation: landscape) {
     .hero {
         min-height: 100vh;
-        padding: 60px 0;
+        padding: 120px 0 60px;
+        align-items: flex-start;
     }
     
     .hero-container {
