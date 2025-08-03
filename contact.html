@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - E-Cell UCER</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="assets/logo.png?v=1" alt="E-Cell UCER Logo" class="logo-image">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="initiatives.html" class="nav-link">Initiatives</a></li>
+                <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="particle-bg">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="container">
+            <div class="contact-hero-content" data-aos="fade-up">
+                <h1>Get in Touch with E-Cell UCER</h1>
+                <p>Have questions? Want to collaborate? We'd love to hear from you and help you start your entrepreneurial journey!</p>
+                <div class="contact-hero-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>24/7 Support</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Quick Response</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <span>Always Available</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="contact-form-wrapper">
+                <div class="contact-form-content" data-aos="fade-right">
+                    <h2>Send Us a Message</h2>
+                    <p>Ready to start your entrepreneurial journey? Drop us a message and we'll get back to you as soon as possible. Whether you have questions about our events, want to join our team, or need startup guidance - we're here to help!</p>
+                    
+                    <div class="contact-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Quick Response Time (Within 24 hours)</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expert Guidance & Mentorship</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Free Consultation & Support</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm" action="https://formsubmit.co/ecellucer@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Contact Message - E-Cell UCER">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_autoresponse" value="Thank you for contacting E-Cell UCER! We have received your message and will get back to you within 24 hours. Stay connected with us!">
+                        <input type="hidden" name="form_type" value="contact">
+                        
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number (optional)">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Event Information">Event Information</option>
+                                <option value="Join E-Cell Team">Join E-Cell Team</option>
+                                <option value="Startup Support">Startup Support</option>
+                                <option value="Partnership">Partnership</option>
+                                <option value="Workshop/Program">Workshop/Program</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell us more about your inquiry..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                    
+                    <!-- Success Message -->
+                    <div id="contactSuccessMessage" class="success-message" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Message Sent Successfully!</h3>
+                        <p>Thank you for reaching out to E-Cell UCER. We'll get back to you within 24 hours!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Section -->
+    <section id="volunteer" class="volunteer-section">
+        <div class="container">
+            <div class="volunteer-content" data-aos="fade-up">
+                <div class="volunteer-text">
+                    <h2>🙌 Volunteer with E-Cell UCER</h2>
+                    <p>Join our dynamic team of volunteers and contribute to building the entrepreneurial ecosystem. Gain hands-on experience in event management, marketing, and community building while making a real impact.</p>
+                    
+                    <div class="volunteer-benefits">
+                        <div class="benefit-item">
+                            <i class="fas fa-users"></i>
+                            <span>Network with like-minded individuals</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Learn event management skills</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>Earn certificates and recognition</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Contribute to startup ecosystem</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="volunteer-form" data-aos="fade-left">
+                    <h3>Apply as a Volunteer</h3>
+                    <form id="volunteerForm" action="https://formsubmit.co/ecellucer@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="Volunteer Application - E-Cell UCER">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="form_type" value="volunteer">
+                        
+                        <div class="form-group">
+                            <label for="volunteer-name">Full Name *</label>
+                            <input type="text" id="volunteer-name" name="name" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="volunteer-email">Email Address *</label>
+                            <input type="email" id="volunteer-email" name="email" required placeholder="Enter your email address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="volunteer-phone">Phone Number *</label>
+                            <input type="tel" id="volunteer-phone" name="phone" required placeholder="Enter your phone number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="volunteer-branch">Branch/Department *</label>
+                            <input type="text" id="volunteer-branch" name="branch" required placeholder="e.g., Computer Science, Mechanical, etc.">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="volunteer-year">Year of Study *</label>
+                            <select id="volunteer-year" name="year" required>
+                                <option value="">Select your year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="volunteer-interest">Areas of Interest *</label>
+                            <select id="volunteer-interest" name="interest" required>
+                                <option value="">Select your interest</option>
+                                <option value="Event Management">Event Management</option>
+                                <option value="Marketing & Promotion">Marketing & Promotion</option>
+                                <option value="Content Creation">Content Creation</option>
+                                <option value="Technical Support">Technical Support</option>
+                                <option value="Social Media">Social Media</option>
+                                <option value="Photography/Videography">Photography/Videography</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="volunteer-motivation">Why do you want to volunteer? *</label>
+                            <textarea id="volunteer-motivation" name="motivation" rows="4" required placeholder="Tell us about your motivation to join E-Cell UCER..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Application
+                        </button>
+                    </form>
+                    
+                    <!-- Success Message -->
+                    <div id="volunteerSuccessMessage" class="success-message" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Application Submitted Successfully!</h3>
+                        <p>Thank you for your interest in volunteering with E-Cell UCER. We'll review your application and get back to you within 48 hours!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Section -->
+    <section id="partner" class="partner-section">
+        <div class="container">
+            <div class="partner-content" data-aos="fade-up">
+                <div class="partner-text">
+                    <h2>🤝 Partner with E-Cell UCER</h2>
+                    <p>Collaborate with E-Cell UCER to create meaningful opportunities for students. Whether you're a startup, corporation, or organization, let's work together to foster innovation and entrepreneurship.</p>
+                    
+                    <div class="partnership-options">
+                        <div class="option-item">
+                            <i class="fas fa-building"></i>
+                            <span>Corporate Partnerships</span>
+                        </div>
+                        <div class="option-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Startup Collaborations</span>
+                        </div>
+                        <div class="option-item">
+                            <i class="fas fa-handshake"></i>
+                            <span>Event Sponsorships</span>
+                        </div>
+                        <div class="option-item">
+                            <i class="fas fa-users"></i>
+                            <span>Mentorship Programs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="partner-form" data-aos="fade-left">
+                    <h3>Initiate Partnership</h3>
+                    <form id="partnerForm" action="https://formsubmit.co/ecellucer@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="Partnership Inquiry - E-Cell UCER">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="form_type" value="partnership">
+                        
+                        <div class="form-group">
+                            <label for="partner-name">Contact Person *</label>
+                            <input type="text" id="partner-name" name="contact_person" required placeholder="Enter contact person name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="partner-company">Company/Organization *</label>
+                            <input type="text" id="partner-company" name="company" required placeholder="Enter company/organization name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="partner-email">Email Address *</label>
+                            <input type="email" id="partner-email" name="email" required placeholder="Enter your email address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="partner-phone">Phone Number *</label>
+                            <input type="tel" id="partner-phone" name="phone" required placeholder="Enter your phone number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="partner-type">Partnership Type *</label>
+                            <select id="partner-type" name="partnership_type" required>
+                                <option value="">Select partnership type</option>
+                                <option value="Corporate Partnership">Corporate Partnership</option>
+                                <option value="Startup Collaboration">Startup Collaboration</option>
+                                <option value="Event Sponsorship">Event Sponsorship</option>
+                                <option value="Mentorship Program">Mentorship Program</option>
+                                <option value="Workshop/Training">Workshop/Training</option>
+                                <option value="Internship Opportunities">Internship Opportunities</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="partner-proposal">Partnership Proposal *</label>
+                            <textarea id="partner-proposal" name="proposal" rows="4" required placeholder="Describe your partnership proposal and how we can collaborate..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Partnership Request
+                        </button>
+                    </form>
+                    
+                    <!-- Success Message -->
+                    <div id="partnerSuccessMessage" class="success-message" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Partnership Request Sent!</h3>
+                        <p>Thank you for your interest in partnering with E-Cell UCER. We'll review your proposal and get back to you within 72 hours!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>E-Cell UCER</h3>
+                    <p>Accelerating entrepreneurship and innovation at UCER through learning, building, and scaling.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="initiatives.html">Initiatives</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="team.html">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> UCER, Prayagraj</li>
+                        <li><i class="fas fa-envelope"></i> ecellucer@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest events and initiatives</p>
+                    <div class="newsletter-form">
+                        <div class="success-message" id="newsletterSuccessMessage" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            Thank you! You've been subscribed to our newsletter.
+                        </div>
+                        <form id="newsletterForm" action="https://formsubmit.co/ecellucer@gmail.com" method="POST">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_subject" value="Newsletter Subscription - E-Cell UCER">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_autoresponse" value="Thank you for subscribing to E-Cell UCER newsletter! You'll receive updates about our latest events and initiatives.">
+                            <input type="hidden" name="form_type" value="newsletter">
+                            
+                            <div class="newsletter-input-group">
+                                <input type="email" name="newsletterEmail" placeholder="Enter your email" required>
+                                <button type="submit" class="newsletter-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    <span>Subscribe</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 E-Cell UCER. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Handle all forms with AJAX to prevent page redirects
+        const forms = ['contactForm', 'volunteerForm', 'partnerForm', 'newsletterForm'];
+        
+        forms.forEach(formId => {
+            const form = document.getElementById(formId);
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Prevent default form submission
+                    
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    
+                    // Submit to FormSubmit
+                    fetch(this.action, {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show success message
+                            const successId = formId.replace('Form', 'SuccessMessage');
+                            const successMessage = document.getElementById(successId);
+                            if (successMessage) {
+                                successMessage.style.display = 'block';
+                                successMessage.scrollIntoView({ 
+                                    behavior: 'smooth',
+                                    block: 'center'
+                                });
+                            }
+                            
+                            // Reset form
+                            this.reset();
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error submitting your form. Please try again.');
+                    })
+                    .finally(() => {
+                        // Reset button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -6,6 +6,42 @@ AOS.init({
     offset: 100
 });
 
+// Fade in sections on scroll
+function fadeInSections() {
+    const sections = document.querySelectorAll('section');
+    const cards = document.querySelectorAll('.initiative-snapshot-card, .event-highlight-card, .team-preview-member');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+    
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// Initialize fade effects
+document.addEventListener('DOMContentLoaded', function() {
+    fadeInSections();
+    
+    // Add staggered animation to cards
+    const cards = document.querySelectorAll('.initiative-snapshot-card, .event-highlight-card, .team-preview-member');
+    cards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+    });
+});
+
 // Loading Screen
 window.addEventListener('load', () => {
     const loading = document.querySelector('.loading');
@@ -670,4 +706,113 @@ style.textContent = `
         animation-fill-mode: both;
     }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
+
+// Volunteer Form Handling
+document.addEventListener('DOMContentLoaded', function() {
+    const volunteerForm = document.getElementById('volunteerForm');
+    const volunteerSuccessMessage = document.getElementById('volunteerSuccessMessage');
+    
+    if (volunteerForm) {
+        volunteerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitButton = volunteerForm.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            // Set loading state
+            setButtonLoading(submitButton, true);
+            
+            // Simulate form submission (replace with actual form handling)
+            setTimeout(() => {
+                // Hide form and show success message
+                volunteerForm.style.display = 'none';
+                volunteerSuccessMessage.style.display = 'block';
+                
+                // Reset button
+                setButtonLoading(submitButton, false);
+                submitButton.innerHTML = originalText;
+                
+                // Scroll to success message
+                volunteerSuccessMessage.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Reset form after showing success message
+                setTimeout(() => {
+                    volunteerForm.reset();
+                    volunteerForm.style.display = 'block';
+                    volunteerSuccessMessage.style.display = 'none';
+                }, 5000);
+                
+            }, 2000);
+        });
+    }
+});
+
+// Partner Form Handling
+document.addEventListener('DOMContentLoaded', function() {
+    const partnerForm = document.getElementById('partnerForm');
+    const partnerSuccessMessage = document.getElementById('partnerSuccessMessage');
+    
+    if (partnerForm) {
+        partnerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitButton = partnerForm.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            // Set loading state
+            setButtonLoading(submitButton, true);
+            
+            // Simulate form submission (replace with actual form handling)
+            setTimeout(() => {
+                // Hide form and show success message
+                partnerForm.style.display = 'none';
+                partnerSuccessMessage.style.display = 'block';
+                
+                // Reset button
+                setButtonLoading(submitButton, false);
+                submitButton.innerHTML = originalText;
+                
+                // Scroll to success message
+                partnerSuccessMessage.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Reset form after showing success message
+                setTimeout(() => {
+                    partnerForm.reset();
+                    partnerForm.style.display = 'block';
+                    partnerSuccessMessage.style.display = 'none';
+                }, 5000);
+                
+            }, 2000);
+        });
+    }
+});
+
+// Smooth scrolling for anchor links
+document.addEventListener('DOMContentLoaded', function() {
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const offsetTop = targetElement.offsetTop - 100; // Account for fixed navbar
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});

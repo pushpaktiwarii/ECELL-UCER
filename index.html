@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
-<body>
+<body class="home-page">
     <!-- Loading Screen -->
     <div class="loading">
         <div class="spinner"></div>
@@ -19,26 +19,28 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="assets/logo.png?v=1" alt="E-Cell UCER Logo" class="logo-image">
+                <a href="index.html">
+                    <img src="assets/logo.png?v=1" alt="E-Cell UCER Logo" class="logo-image">
+                </a>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#home" class="nav-link active">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
+                    <a href="about.html" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#initiatives" class="nav-link">Initiatives</a>
+                    <a href="initiatives.html" class="nav-link">Initiatives</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#events" class="nav-link">Events</a>
+                    <a href="events.html" class="nav-link">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#team" class="nav-link">Team</a>
+                    <a href="team.html" class="nav-link">Team</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -49,23 +51,7 @@
         </div>
     </nav>
 
-    <!-- News Banner -->
-    <div class="news-banner" id="newsBanner">
-        <div class="banner-content">
-            <div class="banner-text">
-                <i class="fas fa-bullhorn"></i>
-                <span>Show your interest for upcoming E-Cell Event!</span>
-            </div>
-            <div class="banner-actions">
-                <a href="register.html" class="banner-btn">
-                    Register Now →
-                </a>
-                <button class="banner-close" onclick="closeBanner()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -80,9 +66,22 @@
                 <p class="hero-description">
                     Welcome to the entrepreneurship community of UCER where we ideate, iterate, and incubate the future innovations of tomorrow!
                 </p>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn btn-primary">Get Started</a>
+                
+                <!-- Hero Interest Banner -->
+                <div class="hero-interest-banner" data-aos="fade-up" data-aos-delay="300">
+                    <div class="hero-banner-content">
+                        <div class="hero-banner-text">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Express your interest in upcoming E-Cell events!</span>
+                        </div>
+                        <a href="interest-form.html" class="hero-banner-btn">
+                            <i class="fas fa-arrow-right"></i>
+                            Register Interest
+                        </a>
+                    </div>
                 </div>
+                
+
             </div>
             <div class="hero-visual" data-aos="fade-left">
                 <div class="hero-animation">
@@ -142,32 +141,28 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+
+
+    <!-- About Preview Section -->
+    <section id="about" class="about-preview">
+        <div class="particle-bg">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Who are we?</h2>
-                <p>E-Cell UCER is a student-driven organization devoted to fostering entrepreneurship and innovation</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text" data-aos="fade-right">
-                    <h3>Our Mission</h3>
-                    <p>E-Cell UCER is an institute body run by the students of UCER, devoted to acting as a symbiotic link between the entrepreneurs of E-Cell and the existing startup ecosystem, as well as acting as a hub where all the startups can meet, collaborate, and innovate!</p>
-                    <a href="what-we-do.html" class="btn btn-outline">Learn more about E-Cell →</a>
-                </div>
-                <div class="about-stats" data-aos="fade-left">
-                    <div class="stat-card">
-                        <div class="stat-number" data-count="1000+">0</div>
-                        <div class="stat-label">Overall Social Reach</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number" data-count="1+">0</div>
-                        <div class="stat-label">Startups Supported</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number" data-count="1+">0</div>
-                        <div class="stat-label">Successful Events</div>
-                    </div>
+            <div class="about-preview-content" data-aos="fade-up">
+                <div class="about-preview-text">
+                    <h2>Who Are We?</h2>
+                    <p>E-Cell UCER is the official Entrepreneurship Cell of United College of Engineering and Research, Prayagraj. We are dedicated to fostering an entrepreneurial mindset among students and providing them with the resources, mentorship, and opportunities needed to turn their innovative ideas into successful ventures.</p>
+                    <p>Our mission is to create a vibrant ecosystem where students can learn, collaborate, and grow as entrepreneurs. Through workshops, competitions, networking events, and mentorship programs, we empower students to think creatively, take calculated risks, and build solutions that address real-world challenges.</p>
+                    <a href="about.html" class="btn btn-outline">Read More About Us</a>
                 </div>
             </div>
         </div>
@@ -175,375 +170,208 @@
 
 
 
-    <!-- Initiatives Section -->
-    <section id="initiatives" class="initiatives">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Our Initiatives</h2>
-                <p>Discover our comprehensive programs designed to nurture entrepreneurship</p>
-            </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="card-header">
-                        <i class="fas fa-briefcase"></i>
-                        <h3>Grow Your Resume</h3>
-                    </div>
-                    <p>Reach out to us for getting interns for your budding startup!</p>
-                </div>
-                <div class="initiative-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="card-header">
-                        <i class="fas fa-cogs"></i>
-                        <h3>Startup Services Portal</h3>
-                    </div>
-                    <p>Access the startup services for UCER entrepreneurs provided by E-Cell Associations.</p>
-                </div>
-                <div class="initiative-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="card-header">
-                        <i class="fas fa-network-wired"></i>
-                        <h3>Alumni Network</h3>
-                    </div>
-                    <p>An initiative by UCER Alumni and E-Cell UCER to connect current students with successful entrepreneurs.</p>
-                </div>
-                <div class="initiative-card" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="card-header">
-                        <i class="fas fa-user-graduate"></i>
-                        <h3>Startup Mentor Pool</h3>
-                    </div>
-                    <p>Elevate Your Journey: Join Our Startup Mentor Pool for Guided Success!</p>
-                </div>
-                <div class="initiative-card" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="card-header">
-                        <i class="fas fa-flag"></i>
-                        <h3>Campus Ambassador's Program</h3>
-                    </div>
-                    <p>Join our initiative of creating & motivating the entrepreneurs of your college!</p>
-                </div>
-                <div class="initiative-card" data-aos="zoom-in" data-aos-delay="600">
-                    <div class="card-header">
-                        <i class="fas fa-link"></i>
-                        <h3>Scale</h3>
-                    </div>
-                    <p>Link with alumni, use our incubators, pitch to Angel Investors & VCs!</p>
-                </div>
-            </div>
+    <!-- Initiatives Snapshot Section -->
+    <section id="initiatives" class="initiatives-snapshot">
+        <div class="particle-bg">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
         </div>
-    </section>
-
-    <!-- Events Section -->
-    <section id="events" class="events">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2>Upcoming Events</h2>
-                <p>Discover the buzzing events happening throughout the year!</p>
-            </div>
-            <div class="events-slider">
-                <div class="event-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="event-image">
-                        <div class="event-date">
-                            <span class="day">TBA</span>
-                            <span class="month">TBA</span>
-                        </div>
-                    </div>
-                    <div class="event-content">
-                        <h3>Edtech Startup Padhle Akshay</h3>
-                        <p>An exciting opportunity to explore the world of educational technology startups and innovation in learning.</p>
-                        <div class="event-meta">
-                            <span><i class="fas fa-map-marker-alt"></i> Venue: To be announced</span>
-                            <span><i class="fas fa-clock"></i> Date: To be announced</span>
-                        </div>
-                        <a href="register.html" class="btn btn-primary">Register Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="team">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Meet Our Team</h2>
-                <p>Get to know the amazing people behind E-Cell UCER</p>
+                <h2>Our Core Initiatives</h2>
+                <p>Discover our key programs designed to nurture entrepreneurship and innovation</p>
             </div>
             
-            <!-- Faculty Advisor Section -->
-            <div class="faculty-advisor-section" data-aos="fade-up">
-                <h3 class="advisor-title">Faculty Advisor</h3>
-                <div class="advisor-card">
-                    <div class="advisor-image">
-                        <img src="https://via.placeholder.com/400x400/667eea/ffffff?text=Faculty+Advisor" alt="Faculty Advisor">
+            <div class="initiatives-snapshot-grid" data-aos="fade-up" data-aos-delay="100">
+                <div class="initiative-snapshot-card glow-effect">
+                    <div class="initiative-snapshot-icon">
+                        <i class="fas fa-briefcase"></i>
                     </div>
-                    <div class="advisor-info">
-                        <h3>Mr. Sandeep Mukherjee</h3>
-                        <p class="advisor-position">Faculty Advisor</p>
-                        <p class="advisor-department">Department of Computer Science</p>
-                        <p class="advisor-description">Experienced mentor guiding our entrepreneurial journey with expertise in innovation and business development.</p>
-                        <div class="advisor-social-links">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Core Team Section -->
-            <div class="core-team-section" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="core-team-title">Core Team</h3>
-                
-                <!-- Leadership Row: Coordinator -->
-                <div class="team-row leadership-row">
-                    <div class="team-grid leadership-grid">
-                        <div class="team-member coordinator" data-aos="fade-up" data-aos-delay="100">
-                            <div class="member-image">
-                                <img src="assets/PUSHPPOK TIWAR.PNG" alt="Coordinator">
-                            </div>
-                            <div class="member-info">
-                                <h3>Pushpak Tiwari</h3>
-                                <p class="position">Coordinator</p>
-                                <div class="social-links">
-                                    <a href="https://www.linkedin.com/in/pushpaktiwari/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                    <a href="mailto:pushpaktiwari6@gmail.com"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h3>Startup Internship Drive</h3>
+                    <p>Connect students with fast-growing startups for real-world experience and industry exposure.</p>
+                    <a href="initiatives.html" class="learn-more-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                <!-- Management Row: PR & Media Heads -->
-                <div class="team-row management-row">
-                    <div class="team-grid management-grid">
-                        <div class="team-member" data-aos="fade-up" data-aos-delay="200">
-                            <div class="member-image">
-                                <img src="assets/PARIDHI SNGH.PNG" alt="PR Head 1">
-                            </div>
-                            <div class="member-info">
-                                <h3>Paridhi Singh</h3>
-                                <p class="position">PR & Outreach Head</p>
-                                <div class="social-links">
-                                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                                    <a href="mailto:"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="team-member" data-aos="fade-up" data-aos-delay="300">
-                            <div class="member-image">
-                                <img src="assets/PRASHANSHA SANDILIYAAA.PNG" alt="PR Head 2">
-                            </div>
-                            <div class="member-info">
-                                <h3>Prashansa Shandilya</h3>
-                                <p class="position">PR & Outreach Head</p>
-                                <div class="social-links">
-                                    <a href="https://www.linkedin.com/in/prashansa-shandilya-7a77b236a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                    <a href="mailto:prashansashandilya428@gmail.com"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="team-member" data-aos="fade-up" data-aos-delay="400">
-                            <div class="member-image">
-                                <img src="assets/PRASHANT MAURYA.PNG" alt="Media Head 1">
-                            </div>
-                            <div class="member-info">
-                                <h3>Prashant Maurya</h3>
-                                <p class="position">Media Head</p>
-                                <div class="social-links">
-                                    <a href="https://www.linkedin.com/in/prashant-maurya-1613a7329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                    <a href="mailto:mauryaprashant270@gmail.com"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="team-member" data-aos="fade-up" data-aos-delay="500">
-                            <div class="member-image">
-                                <img src="assets/UTKARSH SINGH.PNG" alt="Media Head 2">
-                            </div>
-                            <div class="member-info">
-                                <h3>Utkarsh Verma</h3>
-                                <p class="position">Media Head</p>
-                                <div class="social-links">
-                                    <a href="https://www.linkedin.com/in/utkarsh-verma-98289a318?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
-                                    <a href="mailto:utkarshverma812@gmail.com"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="initiative-snapshot-card glow-effect">
+                    <div class="initiative-snapshot-icon">
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
+                    <h3>Campus Startup Series</h3>
+                    <p>Regular workshops and bootcamps covering all aspects of startup development and business fundamentals.</p>
+                    <a href="initiatives.html" class="learn-more-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                <!-- Operations & Creative Row: Event & Operations, Design & Tech Heads -->
-                <div class="team-row operations-creative-row">
-                    <div class="team-grid operations-creative-grid">
-                        <div class="team-member" data-aos="fade-up" data-aos-delay="600">
-                            <div class="member-image">
-                                <img src="assets/SHIVAM TRIPATHI.png" alt="Operation Head 1">
-                            </div>
-                            <div class="member-info">
-                                <h3>Shivam Tripathi</h3>
-                                <p class="position">Event & Operations Head</p>
-                                <div class="social-links">
-                                    <a href="https://www.linkedin.com/in/shivamtripathi8924?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B4Ljxd2i%2BRviQ6H3ZaLRNxw%3D%3D" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                    <a href="mailto:shivamtripathi8924@gmail.com"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="team-member" data-aos="fade-up" data-aos-delay="700">
-                            <div class="member-image">
-                                <img src="assets/RUDRA P S.png" alt="Operation Head 2">
-                            </div>
-                            <div class="member-info">
-                                <h3>Rudra Pratap Singh</h3>
-                                <p class="position">Event & Operations Head</p>
-                                <div class="social-links">
-                                    <a href="https://www.linkedin.com/in/rudra-pratap-singh-384376328" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                    <a href="mailto:rudrathakur0045@gmail.com"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="team-member" data-aos="fade-up" data-aos-delay="800">
-                            <div class="member-image">
-                                <img src="assets/PRASHANT PANDEY🔥.pNG" alt="Design Head 1">
-                            </div>
-                            <div class="member-info">
-                                <h3>Prashant Pandey</h3>
-                                <p class="position">Content & Design Head</p>
-                                <div class="social-links">
-                                    <a href="https://www.linkedin.com/in/prashantpandey7" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                    <a href="mailto:prashantpandeyucer@gmail.com"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="team-member" data-aos="fade-up" data-aos-delay="900">
-                            <div class="member-image">
-                            <img src="assets/ADITYA KR SINGH.PNG" alt="Tech Head">
-                            </div>
-                            <div class="member-info">
-                                <h3>Aditya Kumar Singh</h3>
-                                <p class="position">Tech Head</p>
-                                <div class="social-links">
-                                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="initiative-snapshot-card glow-effect">
+                    <div class="initiative-snapshot-icon">
+                        <i class="fas fa-rocket"></i>
                     </div>
+                    <h3>Learn2Launch</h3>
+                    <p>Comprehensive program helping students transform their ideas into market-ready products and services.</p>
+                    <a href="initiatives.html" class="learn-more-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
-                
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
+
+
+    <!-- Team Preview Section -->
+    <section id="team" class="team-preview">
+        <div class="particle-bg">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2>What people think about us</h2>
+                <h2>Meet the Faces Behind E-Cell</h2>
+                <p>Get to know the passionate team driving innovation at UCER</p>
             </div>
-            <div class="testimonials-slider">
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="quote">
-                        <i class="fas fa-quote-left"></i>
-                        <p>E-Cell UCER is a very vibrant group of student entrepreneurs and mentors who are a very passionate group. Whatever they do, they do with so much enthusiasm and energy.</p>
+            
+            <div class="team-preview-carousel" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-preview-member">
+                    <div class="team-preview-image">
+                        <img src="assets/PUSHPPOK TIWAR.PNG" alt="Coordinator">
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="https://via.placeholder.com/80x80/667eea/ffffff?text=JD" alt="Author">
-                        </div>
-                        <div class="author-info">
-                            <h4>Dr. Swapnil Srivastava</h4>
-                            <p>Principal, UCER</p>
-                        </div>
+                    <div class="team-preview-info">
+                        <h3>Pushpak Tiwari</h3>
+                        <p class="team-preview-position">Coordinator</p>
                     </div>
                 </div>
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="quote">
-                        <i class="fas fa-quote-left"></i>
-                        <p>It was an honor to participate in the E-Summit. The amount of energy and passion displayed by the budding entrepreneurs was impressive at the very least.</p>
+                
+                <div class="team-preview-member">
+                    <div class="team-preview-image">
+                        <img src="assets/PARIDHI SNGH.PNG" alt="PR Head">
+                            </div>
+                    <div class="team-preview-info">
+                        <h3>Paridhi Singh</h3>
+                        <p class="team-preview-position">PR & Outreach Head</p>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="https://via.placeholder.com/80x80/764ba2/ffffff?text=MS" alt="Author">
-                        </div>
-                        <div class="author-info">
-                            <h4>Dr. Vijay Kumar Dwivedi</h4>
-                            <p>Dean, UCER</p>
-                        </div>
+                </div>
+                
+                <div class="team-preview-member">
+                    <div class="team-preview-image">
+                        <img src="assets/PRASHANSHA SANDILIYAAA.PNG" alt="PR Head">
+                            </div>
+                    <div class="team-preview-info">
+                                <h3>Prashansa Shandilya</h3>
+                        <p class="team-preview-position">PR & Outreach Head</p>
                     </div>
+                </div>
+                
+                <div class="team-preview-member">
+                    <div class="team-preview-image">
+                        <img src="assets/PRASHANT MAURYA.PNG" alt="Media Head">
+                            </div>
+                    <div class="team-preview-info">
+                        <h3>Prashant Maurya</h3>
+                        <p class="team-preview-position">Media Head</p>
+                    </div>
+                    </div>
+                </div>
+                
+            <div class="team-preview-cta" data-aos="fade-up" data-aos-delay="200">
+                <a href="team.html" class="btn btn-outline">Meet the Whole Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links Section -->
+    <section class="social-links-section">
+        <div class="particle-bg">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Connect With Us</h2>
+                <p>Stay connected with E-Cell UCER on social media for latest updates, events, and opportunities</p>
+            </div>
+            
+            <div class="social-links-grid" data-aos="fade-up" data-aos-delay="100">
+                <a href="https://chat.whatsapp.com/KorpXvVOCKg7FgUgILCk2g" target="_blank" class="social-link-card whatsapp" title="Join WhatsApp Group">
+                    <div class="social-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="social-content">
+                        <h3>WhatsApp Group</h3>
+                        <p>Join our community</p>
+                    </div>
+                </a>
+                
+                <a href="https://www.instagram.com/ecellucer" target="_blank" class="social-link-card instagram" title="Follow on Instagram">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="social-content">
+                        <h3>Instagram</h3>
+                        <p>@ecellucer</p>
+                    </div>
+                </a>
+                
+                <a href="https://www.linkedin.com/company/ecell-ucer-prayagraj" target="_blank" class="social-link-card linkedin" title="Connect on LinkedIn">
+                    <div class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="social-content">
+                        <h3>LinkedIn</h3>
+                        <p>E-Cell UCER</p>
+                    </div>
+                </a>
+                
+                <a href="https://www.facebook.com/ecellucer" target="_blank" class="social-link-card facebook" title="Like on Facebook">
+                    <div class="social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <div class="social-content">
+                        <h3>Facebook</h3>
+                        <p>E-Cell UCER</p>
+                    </div>
+                </a>
+                
+                <a href="mailto:ecellucer@gmail.com" class="social-link-card email" title="Send Email">
+                    <div class="social-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="social-content">
+                        <h3>Email Us</h3>
+                        <p>ecellucer@gmail.com</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="collaboration-cta" data-aos="fade-up" data-aos-delay="200">
+                <span class="cta-text">Want to collaborate with us?</span>
+                <div class="cta-buttons">
+                    <a href="contact.html#volunteer" class="cta-btn volunteer-btn">Volunteer</a>
+                    <a href="contact.html#partner" class="cta-btn partner-btn">Partner</a>
+                    <a href="contact.html" class="cta-btn contact-btn">Contact Us</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info" data-aos="fade-right">
-                    <h2>Contact Us</h2>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Address</h4>
-                            <p>UCER Campus<br>Naini, Prayagraj, Uttar Pradesh<br>PIN: 211010</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>ecellucer@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <div>
-                            <h4>WhatsApp</h4>
-                            <p></p><a href="https://chat.whatsapp.com/KorpXvVOCKg7FgUgILCk2g" target="_blank">Connect with us on WhatsApp</a></p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://wa.me/+919454645431" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/ecellucer" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/ecellucer" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.linkedin.com/company/ecell-ucer-prayagraj" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form" data-aos="fade-left">
-                    <h3>Send us a message</h3>
-                    <div class="success-message" id="contactSuccessMessage" style="display: none;">
-                        <i class="fas fa-check-circle"></i>
-                        Thank you! Your message has been sent successfully. We'll get back to you soon.
-                    </div>
-                    <form id="contactForm" action="https://formsubmit.co/ecellucer@gmail.com" method="POST">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_subject" value="New Contact Message - E-Cell UCER">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_autoresponse" value="Thank you for contacting E-Cell UCER! We have received your message and will get back to you soon. Stay connected with us!">
-                        <input type="hidden" name="form_type" value="contact">
-                        
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="subject" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -591,6 +419,7 @@
                                 <input type="email" name="newsletterEmail" placeholder="Enter your email" required>
                                 <button type="submit" class="newsletter-btn">
                                     <i class="fas fa-paper-plane"></i>
+                                    <span>Subscribe</span>
                                 </button>
                             </div>
                         </form>

@@ -70,10 +70,15 @@
         <h1><i class="fas fa-check-circle"></i> FormSubmit Test Page</h1>
         <p>This page helps you test if all forms are properly connected to FormSubmit.</p>
         
+        <div class="status success" style="margin-bottom: 30px; text-align: center; padding: 20px;">
+            <h2 style="margin: 0 0 10px 0; color: #155724;">🎉 All Forms Successfully Activated!</h2>
+            <p style="margin: 0; font-size: 16px;">All 6 forms are now active with FormSubmit and ready to receive submissions.</p>
+        </div>
+        
         <div class="test-section">
             <h3><i class="fas fa-user-plus"></i> Event Registration Form</h3>
-            <div class="status info">
-                <strong>Status:</strong> Connected to FormSubmit
+            <div class="status success">
+                <strong>Status:</strong> ✅ Active with FormSubmit
             </div>
             <p><strong>Email:</strong> ecellucer@gmail.com</p>
             <p><strong>Features:</strong> Auto-response, redirect to thank you page, captcha disabled</p>
@@ -82,18 +87,18 @@
         
         <div class="test-section">
             <h3><i class="fas fa-envelope"></i> Contact Form</h3>
-            <div class="status info">
-                <strong>Status:</strong> Connected to FormSubmit
+            <div class="status success">
+                <strong>Status:</strong> ✅ Active with FormSubmit
             </div>
             <p><strong>Email:</strong> ecellucer@gmail.com</p>
             <p><strong>Features:</strong> Auto-response, table template, captcha disabled</p>
-            <a href="index.html#contact" class="btn-test">Test Contact Form</a>
+            <a href="contact.html" class="btn-test">Test Contact Form</a>
         </div>
         
         <div class="test-section">
             <h3><i class="fas fa-newspaper"></i> Newsletter Form</h3>
-            <div class="status info">
-                <strong>Status:</strong> Connected to FormSubmit
+            <div class="status success">
+                <strong>Status:</strong> ✅ Active with FormSubmit
             </div>
             <p><strong>Email:</strong> ecellucer@gmail.com</p>
             <p><strong>Features:</strong> Auto-response, table template, captcha disabled</p>
@@ -101,17 +106,61 @@
         </div>
         
         <div class="test-section">
+            <h3><i class="fas fa-calendar-check"></i> Event Interest Form</h3>
+            <div class="status success">
+                <strong>Status:</strong> ✅ Active with FormSubmit
+            </div>
+            <p><strong>Email:</strong> ecellucer@gmail.com</p>
+            <p><strong>Features:</strong> Auto-response, table template, captcha disabled</p>
+            <a href="interest-form.html" class="btn-test">Test Interest Form</a>
+        </div>
+        
+        <div class="test-section">
             <h3><i class="fas fa-cog"></i> FormSubmit Configuration</h3>
             <div class="status success">
-                <strong>All Forms Configured:</strong> ✅
+                <strong>All Forms Active:</strong> ✅
             </div>
             <ul>
                 <li><strong>Email:</strong> ecellucer@gmail.com</li>
                 <li><strong>Captcha:</strong> Disabled</li>
                 <li><strong>Template:</strong> Table format</li>
                 <li><strong>Auto-response:</strong> Enabled</li>
-                <li><strong>Redirect:</strong> Thank you page (registration form)</li>
+                <li><strong>Page Redirects:</strong> ❌ Disabled (AJAX handling)</li>
+                <li><strong>Forms Active:</strong> 6 forms (Registration, Contact, Newsletter, Interest, Volunteer, Partner)</li>
             </ul>
+        </div>
+        
+        <div class="test-section">
+            <h3><i class="fas fa-list-check"></i> All Active Forms</h3>
+            <div class="status success">
+                <strong>Total Forms:</strong> 6 forms now active with FormSubmit
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                    <h4 style="margin: 0 0 10px 0; color: #28a745;">✅ Event Registration</h4>
+                    <p style="margin: 0; font-size: 14px;">register.html</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                    <h4 style="margin: 0 0 10px 0; color: #28a745;">✅ Contact Form</h4>
+                    <p style="margin: 0; font-size: 14px;">contact.html</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                    <h4 style="margin: 0 0 10px 0; color: #28a745;">✅ Newsletter</h4>
+                    <p style="margin: 0; font-size: 14px;">index.html</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                    <h4 style="margin: 0 0 10px 0; color: #28a745;">✅ Event Interest</h4>
+                    <p style="margin: 0; font-size: 14px;">interest-form.html</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                    <h4 style="margin: 0 0 10px 0; color: #28a745;">✅ Volunteer Form</h4>
+                    <p style="margin: 0; font-size: 14px;">contact.html#volunteer</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                    <h4 style="margin: 0 0 10px 0; color: #28a745;">✅ Partner Form</h4>
+                    <p style="margin: 0; font-size: 14px;">contact.html#partner</p>
+                </div>
+            </div>
         </div>
         
         <div class="test-section">
