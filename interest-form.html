@@ -394,29 +394,8 @@
         });
 
         function showSuccessMessage(message) {
-            // Create success message element
-            const successDiv = document.createElement('div');
-            successDiv.className = 'success-message';
-            successDiv.innerHTML = `
-                <i class="fas fa-check-circle"></i>
-                <span>${message}</span>
-            `;
-            
-            // Add to page
-            document.body.appendChild(successDiv);
-            
-            // Show message
-            setTimeout(() => {
-                successDiv.classList.add('show');
-            }, 100);
-            
-            // Remove after 5 seconds
-            setTimeout(() => {
-                successDiv.classList.remove('show');
-                setTimeout(() => {
-                    document.body.removeChild(successDiv);
-                }, 300);
-            }, 5000);
+            // Use the enhanced toast success message
+            showToastSuccess(message, 2000);
         }
 
         function showErrorMessage(message) {

@@ -281,6 +281,139 @@ function setButtonLoading(button, isLoading) {
     }
 }
 
+// Enhanced Toast Success Message Function
+function showToastSuccess(message, duration = 2000) {
+    // Remove any existing toast messages
+    const existingToast = document.querySelector('.toast-success-message');
+    if (existingToast) {
+        existingToast.remove();
+    }
+    
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = 'toast-success-message';
+    toast.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <span class="message-text">${message}</span>
+        <button class="close-btn" onclick="this.parentElement.remove()">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+    
+    // Add to body
+    document.body.appendChild(toast);
+    
+    // Show animation
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+    
+    // Swipe functionality
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    
+    // Touch events for mobile
+    toast.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+        toast.style.cursor = 'grabbing';
+    });
+    
+    toast.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        currentX = e.touches[0].clientX;
+        const diffX = currentX - startX;
+        
+        // Limit the drag distance
+        if (Math.abs(diffX) > 50) {
+            toast.style.transform = `translateX(${diffX}px)`;
+            toast.style.opacity = Math.max(0, 1 - Math.abs(diffX) / 200);
+        }
+    });
+    
+    toast.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        toast.style.cursor = 'grab';
+        
+        const diffX = currentX - startX;
+        
+        if (Math.abs(diffX) > 100) {
+            // Swipe threshold reached - hide toast
+            if (diffX > 0) {
+                toast.classList.add('swipe-right');
+            } else {
+                toast.classList.add('swipe-left');
+            }
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        } else {
+            // Reset position
+            toast.style.transform = '';
+            toast.style.opacity = '';
+        }
+    });
+    
+    // Mouse events for desktop
+    toast.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        isDragging = true;
+        toast.style.cursor = 'grabbing';
+    });
+    
+    toast.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        currentX = e.clientX;
+        const diffX = currentX - startX;
+        
+        if (Math.abs(diffX) > 50) {
+            toast.style.transform = `translateX(${diffX}px)`;
+            toast.style.opacity = Math.max(0, 1 - Math.abs(diffX) / 200);
+        }
+    });
+    
+    toast.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        toast.style.cursor = 'grab';
+        
+        const diffX = currentX - startX;
+        
+        if (Math.abs(diffX) > 100) {
+            if (diffX > 0) {
+                toast.classList.add('swipe-right');
+            } else {
+                toast.classList.add('swipe-left');
+            }
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        } else {
+            toast.style.transform = '';
+            toast.style.opacity = '';
+        }
+    });
+    
+    // Auto-hide after duration
+    setTimeout(() => {
+        if (toast.parentElement) {
+            toast.classList.add('hide');
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.remove();
+                }
+            }, 300);
+        }
+    }, duration);
+    
+    return toast;
+}
+
 // Contact Form Handling with AJAX to prevent page redirect
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
@@ -302,14 +435,8 @@ if (contactForm) {
         })
         .then(response => {
             if (response.ok) {
-                // Show success message with animation
-                const successMessage = document.getElementById('contactSuccessMessage');
-                successMessage.style.display = 'flex';
-                successMessage.classList.add('show');
-                successMessage.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'center'
-                });
+                // Show enhanced toast success message
+                showToastSuccess('Thank you! Your message has been sent successfully.', 2000);
                 
                 // Reset form
                 this.reset();
@@ -354,17 +481,11 @@ if (newsletterForm) {
         })
         .then(response => {
             if (response.ok) {
-                // Show success message with animation
-                const successMessage = document.getElementById('newsletterSuccessMessage');
-                successMessage.style.display = 'flex';
-                successMessage.classList.add('show');
-                successMessage.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'center'
-                });
+                // Show enhanced toast success message
+                showToastSuccess('Thank you! You\'ve been subscribed to our newsletter.', 2000);
                 
                 // Reset form
-            this.reset();
+                this.reset();
                 
                 // Reset button
                 submitBtn.innerHTML = originalText;

@@ -141,12 +141,7 @@
                         </button>
                     </form>
                     
-                    <!-- Success Message -->
-                    <div id="contactSuccessMessage" class="success-message" style="display: none;">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>Message Sent Successfully!</h3>
-                        <p>Thank you for reaching out to E-Cell UCER. We'll get back to you within 24 hours!</p>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -380,10 +375,7 @@
                     <h3>Newsletter</h3>
                     <p>Stay updated with our latest events and initiatives</p>
                     <div class="newsletter-form">
-                        <div class="success-message" id="newsletterSuccessMessage" style="display: none;">
-                            <i class="fas fa-check-circle"></i>
-                            Thank you! You've been subscribed to our newsletter.
-                        </div>
+
                         <form id="newsletterForm" action="https://formsubmit.co/ecellucer@gmail.com" method="POST">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_subject" value="Newsletter Subscription - E-Cell UCER">
@@ -442,16 +434,17 @@
                     })
                     .then(response => {
                         if (response.ok) {
-                            // Show success message
-                            const successId = formId.replace('Form', 'SuccessMessage');
-                            const successMessage = document.getElementById(successId);
-                            if (successMessage) {
-                                successMessage.style.display = 'block';
-                                successMessage.scrollIntoView({ 
-                                    behavior: 'smooth',
-                                    block: 'center'
-                                });
+                            // Show enhanced toast success message based on form type
+                            let message = 'Thank you! Your message has been sent successfully.';
+                            if (formId === 'newsletterForm') {
+                                message = 'Thank you! You\'ve been subscribed to our newsletter.';
+                            } else if (formId === 'volunteerForm') {
+                                message = 'Thank you! Your volunteer application has been submitted successfully.';
+                            } else if (formId === 'partnerForm') {
+                                message = 'Thank you! Your partnership inquiry has been sent successfully.';
                             }
+                            
+                            showToastSuccess(message, 2000);
                             
                             // Reset form
                             this.reset();
