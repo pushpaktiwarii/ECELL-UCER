@@ -103,6 +103,81 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Event Modal Functionality
+const eventModal = document.getElementById('eventModal');
+const modalClose = document.getElementById('modalClose');
+const knowMoreBtns = document.querySelectorAll('.know-more-btn');
+
+// Open modal when "Know More" button is clicked
+knowMoreBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const eventType = btn.getAttribute('data-event');
+        
+        // Show the appropriate modal content
+        const modalContent = document.getElementById(`${eventType}-content`);
+        if (modalContent) {
+            // Hide all modal contents first
+            document.querySelectorAll('.event-modal-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Show the specific content
+            modalContent.style.display = 'block';
+            
+            // Show modal
+            eventModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            
+            // Handle iframe loading for registration form
+            handleIframeLoad();
+        }
+    });
+});
+
+// Handle iframe loading for Google Forms
+function handleIframeLoad() {
+    const iframe = document.querySelector('.registration-form iframe');
+    const fallback = document.getElementById('form-fallback');
+    
+    if (iframe && fallback) {
+        // Set a timeout to show fallback if iframe doesn't load within 3 seconds
+        setTimeout(() => {
+            if (iframe.contentWindow && iframe.contentWindow.location.href) {
+                // Iframe loaded successfully
+                iframe.style.display = 'block';
+                fallback.style.display = 'none';
+            } else {
+                // Iframe failed to load, show fallback
+                iframe.style.display = 'none';
+                fallback.style.display = 'block';
+            }
+        }, 3000);
+    }
+}
+
+// Close modal when close button is clicked
+modalClose.addEventListener('click', () => {
+    eventModal.classList.remove('show');
+    document.body.style.overflow = '';
+});
+
+// Close modal when clicking on overlay
+eventModal.addEventListener('click', (e) => {
+    if (e.target === eventModal || e.target.classList.contains('modal-overlay')) {
+        eventModal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && eventModal.classList.contains('show')) {
+        eventModal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+});
+
 // Smooth Scrolling for Navigation Links with Mobile Offset
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
