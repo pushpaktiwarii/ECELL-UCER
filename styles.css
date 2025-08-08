@@ -1125,6 +1125,39 @@ section.visible {
     gap: 0.5rem;
 }
 
+.event-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.event-buttons .btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.event-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.register-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+}
+
+.register-btn:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    color: white;
+}
+
 /* Team Section */
 .team {
     background: #f8f9fa;
@@ -1822,6 +1855,11 @@ section.visible {
         grid-template-columns: 1fr;
     }
 
+    .events-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
     .events-slider {
         grid-template-columns: 1fr;
     }
@@ -1883,6 +1921,49 @@ section.visible {
         flex-direction: column;
         align-items: center;
     }
+    
+    /* Modal Responsive */
+    .modal-content {
+        max-width: 95%;
+        margin: 10px;
+        max-height: 95vh;
+    }
+    
+    .modal-header h2 {
+        font-size: 2rem;
+    }
+    
+    .event-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .badge {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .registration-form iframe {
+        min-height: 500px;
+    }
+    
+    .registration-steps {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .step-card {
+        padding: 1rem;
+    }
+    
+    .contact-card {
+        padding: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1915,6 +1996,71 @@ section.visible {
 
     .stats-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Modal Responsive for Small Screens */
+    .modal-content {
+        max-width: 98%;
+        margin: 5px;
+        max-height: 98vh;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+    }
+    
+    .detail-section {
+        padding: 1rem;
+    }
+    
+    .detail-section h3 {
+        font-size: 1.1rem;
+    }
+    
+    .registration-form iframe {
+        min-height: 400px;
+    }
+    
+    .registration-steps {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .step-card {
+        padding: 0.75rem;
+    }
+    
+    .step-card h4 {
+        font-size: 1rem;
+    }
+    
+    .contact-card {
+        padding: 0.75rem;
+    }
+    
+    .contact-card h4 {
+        font-size: 1rem;
+    }
+    
+    .cta-message {
+        padding: 1rem;
+    }
+    
+    .cta-message h3 {
+        font-size: 1.1rem;
+    }
+    
+    .cta-message p {
+        font-size: 1rem;
     }
 }
 
@@ -3364,6 +3510,15 @@ html {
         gap: 1.5rem;
     }
     
+    .event-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .event-buttons .btn {
+        width: 100%;
+    }
+    
     .event-item {
         flex-direction: column;
         text-align: center;
@@ -3683,6 +3838,8 @@ html {
     display: flex;
     gap: 1rem;
     transition: all 0.3s ease;
+    max-width: 350px;
+    margin: 0 auto;
 }
 
 .event-item:hover {
@@ -3741,6 +3898,401 @@ html {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+/* Upcoming Events Section */
+.upcoming-events {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    justify-items: center;
+}
+
+/* Event Modal Styles */
+.event-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.event-modal.show {
+    display: flex;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 25px;
+    max-width: 900px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+    animation: modalSlideIn 0.4s ease-out;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #f8f9fa;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #e9ecef;
+    transform: scale(1.1);
+}
+
+.modal-close i {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 2rem 1.5rem 1.5rem;
+    border-bottom: 3px solid rgba(102, 126, 234, 0.1);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-radius: 25px 25px 0 0;
+}
+
+.modal-header h2 {
+    font-size: 2.8rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.badge i {
+    font-size: 0.8rem;
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.detail-section {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    border-left: 4px solid #667eea;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.detail-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.1);
+}
+
+.detail-section h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detail-section h3 i {
+    color: #667eea;
+}
+
+.detail-section p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.detail-section p:last-child {
+    margin-bottom: 0;
+}
+
+.detail-section em {
+    color: #667eea;
+    font-style: italic;
+}
+
+.detail-section strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.registration-form {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form iframe {
+    border: none;
+    width: 100%;
+    min-height: 600px;
+}
+
+/* Event Modal Content Styles */
+.eligibility-list,
+.benefits-list,
+.dates-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.eligibility-list li,
+.benefits-list li,
+.dates-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.eligibility-list li:last-child,
+.benefits-list li:last-child,
+.dates-list li:last-child {
+    border-bottom: none;
+}
+
+.process-list {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.process-list li {
+    padding: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.registration-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.step-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid #dee2e6;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #667eea;
+}
+
+.step-card h4 {
+    color: #495057;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.step-card .btn {
+    margin: 1rem 0;
+    width: 100%;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.step-card .btn:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    color: white;
+}
+
+.step-card code {
+    background: #e9ecef;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #495057;
+}
+
+.step-card .note {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 1rem;
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.contact-card {
+    background: linear-gradient(135deg, #e3e4e9 0%, #cbc6d0 100%) !important;
+    color: #333 !important;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.contact-card h4 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #333 !important;
+}
+
+.contact-card p {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #333 !important;
+}
+
+.contact-card p i {
+    color: #333 !important;
+}
+
+.contact-card a {
+    color: #333 !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-card a:hover {
+    color: #ffd700;
+}
+
+.contact-card em {
+    color: #333;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.cta-message {
+    background: linear-gradient(135deg, #cad7cd 0%, #4e5685 100%);
+    color: #333;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-message h3 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.cta-message p {
+    font-size: 1.1rem;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
 }
 
 /* Event Categories Styles */
@@ -8483,8 +9035,8 @@ body.home-page .news-banner {
     }
 }
 
-/* Hero Interest Banner */
-.hero-interest-banner {
+/* Hero Event Banner */
+.hero-event-banner {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -8493,6 +9045,28 @@ body.home-page .news-banner {
     margin: 25px 0;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero-event-banner:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hero-banner-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.hero-banner-btn.register-btn {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+}
+
+.hero-banner-btn.register-btn:hover {
+    background: linear-gradient(135deg, #218838, #1ea085);
+    color: white;
 }
 
 .hero-interest-banner:hover {
@@ -8557,7 +9131,7 @@ body.home-page .news-banner {
 
 /* Responsive Design for Hero Banner */
 @media (max-width: 768px) {
-    .hero-interest-banner {
+    .hero-event-banner {
         padding: 12px 15px;
         margin: 20px 0;
     }
@@ -8572,6 +9146,11 @@ body.home-page .news-banner {
         font-size: 0.9rem;
     }
     
+    .hero-banner-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
     .hero-banner-btn {
         padding: 10px 20px;
         font-size: 0.9rem;
@@ -8580,7 +9159,7 @@ body.home-page .news-banner {
 }
 
 @media (max-width: 480px) {
-    .hero-interest-banner {
+    .hero-event-banner {
         padding: 10px 12px;
         margin: 15px 0;
     }
@@ -8594,9 +9173,16 @@ body.home-page .news-banner {
         font-size: 1rem;
     }
     
+    .hero-banner-buttons {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
     .hero-banner-btn {
         padding: 8px 16px;
         font-size: 0.85rem;
+        width: 100%;
+        justify-content: center;
     }
 }
 
