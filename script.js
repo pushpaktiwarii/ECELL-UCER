@@ -1012,3 +1012,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Image Popup Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const imagePopup = document.getElementById('imagePopup');
+    const popupImage = document.getElementById('popupImage');
+    const imagePopupClose = document.getElementById('imagePopupClose');
+    const galleryImages = document.querySelectorAll('.picture-item img');
+    
+    // Open popup when clicking on gallery images
+    galleryImages.forEach(img => {
+        img.addEventListener('click', function() {
+            popupImage.src = this.src;
+            popupImage.alt = this.alt;
+            imagePopup.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        });
+    });
+    
+    // Close popup when clicking close button
+    imagePopupClose.addEventListener('click', function() {
+        imagePopup.classList.remove('show');
+        document.body.style.overflow = ''; // Restore background scroll
+    });
+    
+    // Close popup when clicking overlay
+    imagePopup.addEventListener('click', function(e) {
+        if (e.target === imagePopup || e.target.classList.contains('image-popup-overlay')) {
+            imagePopup.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close popup with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && imagePopup.classList.contains('show')) {
+            imagePopup.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    });
+});
