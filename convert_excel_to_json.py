@@ -59,4 +59,3 @@ print(f'\nSimplified data created for verification system!')
 print(f'Total certificates: {len(simplified_data)}')
 print('\nSample simplified data:')
 print(json.dumps(simplified_data[0], indent=2))
-
