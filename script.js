@@ -1,10 +1,25 @@
-// Initialize AOS (Animate On Scroll)
+// Enhanced AOS (Animate On Scroll) with Mobile Optimization
 AOS.init({
     duration: 800,
     easing: 'ease-in-out',
     once: true,
-    offset: 100
+    offset: 100,
+    disable: window.innerWidth < 768, // Disable on mobile for better performance
+    mobile: false
 });
+
+// Mobile-specific optimizations
+const isMobile = window.innerWidth < 768;
+const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+
+// Optimize animations for mobile
+if (isMobile) {
+    document.documentElement.style.setProperty('--animation-duration', '0.3s');
+    document.documentElement.style.setProperty('--transition-duration', '0.2s');
+} else {
+    document.documentElement.style.setProperty('--animation-duration', '0.8s');
+    document.documentElement.style.setProperty('--transition-duration', '0.3s');
+}
 
 // Fade in sections on scroll
 function fadeInSections() {
@@ -42,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Loading Screen
+// Enhanced Loading Screen with Performance Optimization
 window.addEventListener('load', () => {
     const loading = document.querySelector('.loading');
     if (loading) {
@@ -51,9 +66,44 @@ window.addEventListener('load', () => {
             loading.style.display = 'none';
         }, 500);
     }
+    
+    // Optimize images for mobile
+    if (isMobile) {
+        optimizeImagesForMobile();
+    }
+    
+    // Initialize lazy loading
+    initializeLazyLoading();
 });
 
-// Sticky Navbar
+// Optimize images for mobile devices
+function optimizeImagesForMobile() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        if (img.dataset.mobileSrc) {
+            img.src = img.dataset.mobileSrc;
+        }
+    });
+}
+
+// Lazy loading for better performance
+function initializeLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// Enhanced Sticky Navbar with Responsive Handling
 const navbar = document.querySelector('.navbar');
 let lastScrollTop = 0;
 
@@ -69,6 +119,30 @@ window.addEventListener('scroll', () => {
     lastScrollTop = scrollTop;
 }, { passive: true });
 
+// Responsive breakpoint handling
+window.addEventListener('resize', debounce(() => {
+    const newIsMobile = window.innerWidth < 768;
+    const newIsTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+    
+    // Update mobile state
+    if (newIsMobile !== isMobile) {
+        location.reload(); // Reload for better mobile/desktop experience
+    }
+}, 250));
+
+// Debounce function for performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
 // Enhanced Mobile Menu Toggle with Better UX
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -80,9 +154,23 @@ hamburger.addEventListener('click', () => {
     // Prevent body scroll when menu is open
     if (navMenu.classList.contains('active')) {
         document.body.style.overflow = 'hidden';
+        // Add focus trap for accessibility
+        const firstLink = navMenu.querySelector('.nav-link');
+        if (firstLink) firstLink.focus();
     } else {
         document.body.style.overflow = '';
     }
+});
+
+// Enhanced dropdown functionality for mobile
+document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+        if (isMobile) {
+            e.preventDefault();
+            const dropdown = toggle.closest('.dropdown');
+            dropdown.classList.toggle('active');
+        }
+    });
 });
 
 // Close mobile menu when clicking on a link
@@ -93,6 +181,32 @@ document.querySelectorAll('.nav-link').forEach(link => {
         document.body.style.overflow = '';
     });
 });
+
+// Enhanced touch and click handling
+let touchStartY = 0;
+let touchEndY = 0;
+
+// Touch gesture for mobile menu
+document.addEventListener('touchstart', (e) => {
+    touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+document.addEventListener('touchend', (e) => {
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+}, { passive: true });
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const swipeDistance = touchStartY - touchEndY;
+    
+    // Swipe up to close mobile menu
+    if (swipeDistance > swipeThreshold && navMenu.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
 
 // Close mobile menu when clicking outside
 document.addEventListener('click', (e) => {

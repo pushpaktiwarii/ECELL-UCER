@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - E-Cell UCER</title>
-    <link rel="icon" type="image/png" href="assets/favicon3.png">
+    <link rel="icon" type="image/jpeg" href="assets/favicon2.jpg">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -26,6 +26,19 @@
                 <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
                 <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        More <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="certificate-verification.html" class="dropdown-item">
+                            <i class="fas fa-certificate"></i> Verify Certificate
+                        </a></li>
+                        <li><a href="interest-form.html" class="dropdown-item">
+                            <i class="fas fa-clipboard-list"></i> Interest Form
+                        </a></li>
+                    </ul>
+                </li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -463,4 +476,469 @@
         });
     </script>
 </body>
+</html> 
+                            <textarea id="volunteer-motivation" name="motivation" rows="4" required placeholder="Tell us about your motivation to join E-Cell UCER..."></textarea>
+
+                        </div>
+
+                        
+
+                        <button type="submit" class="btn btn-primary">
+
+                            <i class="fas fa-paper-plane"></i>
+
+                            Submit Application
+
+                        </button>
+
+                    </form>
+
+                    
+
+                    <!-- Success Message -->
+
+                    <div id="volunteerSuccessMessage" class="success-message" style="display: none;">
+
+                        <i class="fas fa-check-circle"></i>
+
+                        <h3>Application Submitted Successfully!</h3>
+
+                        <p>Thank you for your interest in volunteering with E-Cell UCER. We'll review your application and get back to you within 48 hours!</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Partner Section -->
+
+    <section id="partner" class="partner-section">
+
+        <div class="container">
+
+            <div class="partner-content" data-aos="fade-up">
+
+                <div class="partner-text">
+
+                    <h2>🤝 Partner with E-Cell UCER</h2>
+
+                    <p>Collaborate with E-Cell UCER to create meaningful opportunities for students. Whether you're a startup, corporation, or organization, let's work together to foster innovation and entrepreneurship.</p>
+
+                    
+
+                    <div class="partnership-options">
+
+                        <div class="option-item">
+
+                            <i class="fas fa-building"></i>
+
+                            <span>Corporate Partnerships</span>
+
+                        </div>
+
+                        <div class="option-item">
+
+                            <i class="fas fa-rocket"></i>
+
+                            <span>Startup Collaborations</span>
+
+                        </div>
+
+                        <div class="option-item">
+
+                            <i class="fas fa-handshake"></i>
+
+                            <span>Event Sponsorships</span>
+
+                        </div>
+
+                        <div class="option-item">
+
+                            <i class="fas fa-users"></i>
+
+                            <span>Mentorship Programs</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="partner-form" data-aos="fade-left">
+
+                    <h3>Initiate Partnership</h3>
+
+                    <form id="partnerForm" action="https://formsubmit.co/info@ecellucer.me" method="POST">
+
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <input type="hidden" name="_subject" value="Partnership Inquiry - E-Cell UCER">
+
+                        <input type="hidden" name="_template" value="table">
+
+                        <input type="hidden" name="form_type" value="partnership">
+
+                        
+
+                        <div class="form-group">
+
+                            <label for="partner-name">Contact Person *</label>
+
+                            <input type="text" id="partner-name" name="contact_person" required placeholder="Enter contact person name">
+
+                        </div>
+
+                        
+
+                        <div class="form-group">
+
+                            <label for="partner-company">Company/Organization *</label>
+
+                            <input type="text" id="partner-company" name="company" required placeholder="Enter company/organization name">
+
+                        </div>
+
+                        
+
+                        <div class="form-group">
+
+                            <label for="partner-email">Email Address *</label>
+
+                            <input type="email" id="partner-email" name="email" required placeholder="Enter your email address">
+
+                        </div>
+
+                        
+
+                        <div class="form-group">
+
+                            <label for="partner-phone">Phone Number *</label>
+
+                            <input type="tel" id="partner-phone" name="phone" required placeholder="Enter your phone number">
+
+                        </div>
+
+                        
+
+                        <div class="form-group">
+
+                            <label for="partner-type">Partnership Type *</label>
+
+                            <select id="partner-type" name="partnership_type" required>
+
+                                <option value="">Select partnership type</option>
+
+                                <option value="Corporate Partnership">Corporate Partnership</option>
+
+                                <option value="Startup Collaboration">Startup Collaboration</option>
+
+                                <option value="Event Sponsorship">Event Sponsorship</option>
+
+                                <option value="Mentorship Program">Mentorship Program</option>
+
+                                <option value="Workshop/Training">Workshop/Training</option>
+
+                                <option value="Internship Opportunities">Internship Opportunities</option>
+
+                                <option value="Other">Other</option>
+
+                            </select>
+
+                        </div>
+
+                        
+
+                        <div class="form-group">
+
+                            <label for="partner-proposal">Partnership Proposal *</label>
+
+                            <textarea id="partner-proposal" name="proposal" rows="4" required placeholder="Describe your partnership proposal and how we can collaborate..."></textarea>
+
+                        </div>
+
+                        
+
+                        <button type="submit" class="btn btn-primary">
+
+                            <i class="fas fa-paper-plane"></i>
+
+                            Send Partnership Request
+
+                        </button>
+
+                    </form>
+
+                    
+
+                    <!-- Success Message -->
+
+                    <div id="partnerSuccessMessage" class="success-message" style="display: none;">
+
+                        <i class="fas fa-check-circle"></i>
+
+                        <h3>Partnership Request Sent!</h3>
+
+                        <p>Thank you for your interest in partnering with E-Cell UCER. We'll review your proposal and get back to you within 72 hours!</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div class="footer-section">
+
+                    <h3>E-Cell UCER</h3>
+
+                    <p>Accelerating entrepreneurship and innovation at UCER through learning, building, and scaling.</p>
+
+                </div>
+
+                <div class="footer-section">
+
+                    <h3>Quick Links</h3>
+
+                    <ul>
+
+                        <li><a href="index.html">Home</a></li>
+
+                        <li><a href="about.html">About</a></li>
+
+                        <li><a href="initiatives.html">Initiatives</a></li>
+
+                        <li><a href="events.html">Events</a></li>
+
+                        <li><a href="team.html">Team</a></li>
+
+                    </ul>
+
+                </div>
+
+                <div class="footer-section">
+
+                    <h3>Contact Info</h3>
+
+                    <ul>
+
+                        <li><i class="fas fa-map-marker-alt"></i> UCER, Prayagraj</li>
+
+                        <li><i class="fas fa-envelope"></i> info@ecellucer.me</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="footer-section">
+
+                    <h3>Follow Us</h3>
+
+                    <p>Connect with us on social media for latest updates</p>
+
+                    <div class="social-links-footer">
+
+                        <a href="https://wa.me/+919454645431" target="_blank" class="social-link-footer whatsapp" title="Message on WhatsApp">
+
+                            <i class="fab fa-whatsapp"></i>
+
+                        </a>
+
+                        <a href="https://www.instagram.com/ecellucer" target="_blank" class="social-link-footer instagram" title="Follow on Instagram">
+
+                            <i class="fab fa-instagram"></i>
+
+                        </a>
+
+                        <a href="https://www.linkedin.com/company/e-cell-ucer-prayagraj/" target="_blank" class="social-link-footer linkedin" title="Connect on LinkedIn">
+
+                            <i class="fab fa-linkedin"></i>
+
+                        </a>
+
+                        <a href="https://www.facebook.com/ecellucer" target="_blank" class="social-link-footer facebook" title="Like on Facebook">
+
+                            <i class="fab fa-facebook"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="footer-bottom">
+
+                <p>&copy; 2024 E-Cell UCER. All rights reserved.</p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="script.js"></script>
+
+    <script>
+
+        // Initialize AOS
+
+        AOS.init({
+
+            duration: 1000,
+
+            once: true
+
+        });
+
+
+
+        // Handle all forms with AJAX to prevent page redirects
+
+        const forms = ['contactForm', 'volunteerForm', 'partnerForm', 'newsletterForm'];
+
+        
+
+        forms.forEach(formId => {
+
+            const form = document.getElementById(formId);
+
+            if (form) {
+
+                form.addEventListener('submit', function(e) {
+
+                    e.preventDefault(); // Prevent default form submission
+
+                    
+
+                    const submitBtn = this.querySelector('button[type="submit"]');
+
+                    const originalText = submitBtn.innerHTML;
+
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+                    submitBtn.disabled = true;
+
+                    
+
+                    // Get form data
+
+                    const formData = new FormData(this);
+
+                    
+
+                    // Submit to FormSubmit
+
+                    fetch(this.action, {
+
+                        method: 'POST',
+
+                        body: formData
+
+                    })
+
+                    .then(response => {
+
+                        if (response.ok) {
+
+                            // Show enhanced toast success message based on form type
+
+                            let message = 'Thank you! Your message has been sent successfully.';
+
+                            if (formId === 'newsletterForm') {
+
+                                message = 'Thank you! You\'ve been subscribed to our newsletter.';
+
+                            } else if (formId === 'volunteerForm') {
+
+                                message = 'Thank you! Your volunteer application has been submitted successfully.';
+
+                            } else if (formId === 'partnerForm') {
+
+                                message = 'Thank you! Your partnership inquiry has been sent successfully.';
+
+                            }
+
+                            
+
+                            showToastSuccess(message, 2000);
+
+                            
+
+                            // Reset form
+
+                            this.reset();
+
+                        } else {
+
+                            throw new Error('Form submission failed');
+
+                        }
+
+                    })
+
+                    .catch(error => {
+
+                        console.error('Error:', error);
+
+                        alert('There was an error submitting your form. Please try again.');
+
+                    })
+
+                    .finally(() => {
+
+                        // Reset button
+
+                        submitBtn.innerHTML = originalText;
+
+                        submitBtn.disabled = false;
+
+                    });
+
+                });
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
 </html> 
