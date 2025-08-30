@@ -167,15 +167,51 @@ document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
     toggle.addEventListener('click', (e) => {
         if (isMobile) {
             e.preventDefault();
+            e.stopPropagation(); // Prevent event bubbling
             const dropdown = toggle.closest('.dropdown');
+            const isActive = dropdown.classList.contains('active');
+            
+            // Close all other dropdowns
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== dropdown) {
+                    d.classList.remove('active');
+                }
+            });
+            
+            // Toggle current dropdown
             dropdown.classList.toggle('active');
+            
+            // Add smooth animation
+            if (!isActive) {
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                if (dropdownMenu) {
+                    dropdownMenu.style.maxHeight = '0px';
+                    setTimeout(() => {
+                        dropdownMenu.style.maxHeight = '200px';
+                    }, 10);
+                }
+            }
         }
     });
 });
 
-// Close mobile menu when clicking on a link
+// Close mobile menu when clicking on dropdown items (but not the toggle)
+document.querySelectorAll('.dropdown-item').forEach(item => {
+    item.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
+// Close mobile menu when clicking on a link (but not dropdown toggles)
 document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+        // Don't close menu if it's a dropdown toggle
+        if (link.classList.contains('dropdown-toggle')) {
+            return;
+        }
+        
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
         document.body.style.overflow = '';
