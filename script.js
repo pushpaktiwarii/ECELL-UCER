@@ -218,31 +218,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// Enhanced touch and click handling
-let touchStartY = 0;
-let touchEndY = 0;
 
-// Touch gesture for mobile menu
-document.addEventListener('touchstart', (e) => {
-    touchStartY = e.changedTouches[0].screenY;
-}, { passive: true });
-
-document.addEventListener('touchend', (e) => {
-    touchEndY = e.changedTouches[0].screenY;
-    handleSwipe();
-}, { passive: true });
-
-function handleSwipe() {
-    const swipeThreshold = 50;
-    const swipeDistance = touchStartY - touchEndY;
-    
-    // Swipe up to close mobile menu
-    if (swipeDistance > swipeThreshold && navMenu.classList.contains('active')) {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-}
 
 // Close mobile menu when clicking outside
 document.addEventListener('click', (e) => {
@@ -347,16 +323,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Mobile Touch Optimizations
 if ('ontouchstart' in window) {
-    // Add touch feedback to buttons
-    document.querySelectorAll('.btn, .nav-link, .social-links a').forEach(element => {
-        element.addEventListener('touchstart', function() {
-            this.style.transform = 'scale(0.95)';
-        });
-        
-        element.addEventListener('touchend', function() {
-            this.style.transform = '';
-        });
-    });
+    // Optimize scroll performance on mobile
     
     // Optimize scroll performance on mobile
     let ticking = false;

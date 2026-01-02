@@ -368,16 +368,16 @@ body:not(.home-page) .navbar.scrolled {
 @media (max-width: 768px) {
     .dropdown-menu {
         position: static;
-        background: rgba(102, 126, 234, 0.1);
-        backdrop-filter: blur(10px);
-        box-shadow: none;
+        background: #ffffff;
+        backdrop-filter: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         opacity: 1;
         visibility: visible;
         transform: none;
         padding: 8px;
-        margin: 8px 1rem;
-        border: 1px solid rgba(102, 126, 234, 0.2);
-        border-radius: 8px;
+        margin: 15px 1rem 8px 1rem;
+        border: 1px solid rgba(102, 126, 234, 0.1);
+        border-radius: 12px;
         min-width: auto;
         max-height: 0;
         overflow: hidden;

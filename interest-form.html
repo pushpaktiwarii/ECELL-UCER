@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Event Interest Form - E-Cell UCER</title>
     <link rel="icon" type="image/jpeg" href="assets/favicon2.jpg">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        .success-message, .error-message {
+        .success-message,
+        .error-message {
             position: fixed;
             top: 20px;
             right: 20px;
@@ -22,31 +25,34 @@
             transform: translateX(100%);
             transition: transform 0.3s ease;
             max-width: 300px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-        
+
         .success-message {
             background: #28a745;
         }
-        
+
         .error-message {
             background: #dc3545;
         }
-        
-        .success-message.show, .error-message.show {
+
+        .success-message.show,
+        .error-message.show {
             transform: translateX(0);
         }
-        
-        .success-message i, .error-message i {
+
+        .success-message i,
+        .error-message i {
             margin-right: 10px;
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-                        <div class="nav-logo">
+            <div class="nav-logo">
                 <a href="index.html">
                     <img src="assets/logo.png?v=1" alt="E-Cell UCER Logo" class="logo-image">
                 </a>
@@ -76,11 +82,11 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="certificate-verification.html" class="dropdown-item">
-                            <i class="fas fa-certificate"></i> Verify Certificate
-                        </a></li>
+                                <i class="fas fa-certificate"></i> Verify Certificate
+                            </a></li>
                         <li><a href="interest-form.html" class="dropdown-item">
-                            <i class="fas fa-clipboard-list"></i> Interest Form
-                        </a></li>
+                                <i class="fas fa-clipboard-list"></i> Interest Form
+                            </a></li>
                     </ul>
                 </li>
             </ul>
@@ -111,14 +117,17 @@
                         <i class="fas fa-calendar-check"></i>
                     </div>
                     <h2>Show Your Interest</h2>
-                    <p>Fill out this form to express your interest in our upcoming events. We'll keep you updated with the latest information and early access to registrations.</p>
+                    <p>Fill out this form to express your interest in our upcoming events. We'll keep you updated with
+                        the latest information and early access to registrations.</p>
                 </div>
 
-                <form class="interest-form" id="interestForm" action="https://formsubmit.co/info@ecellucer.me" method="POST">
+                <form class="interest-form" id="interestForm" action="https://formsubmit.co/info@ecellucer.me"
+                    method="POST">
                     <input type="hidden" name="_subject" value="New Event Interest Form Submission - E-Cell UCER">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_autoresponse" value="Thank you for expressing your interest in E-Cell UCER events! We'll keep you updated with our upcoming events and early access opportunities. Stay tuned!">
+                    <input type="hidden" name="_autoresponse"
+                        value="Thank you for expressing your interest in E-Cell UCER events! We'll keep you updated with our upcoming events and early access opportunities. Stay tuned!">
 
                     <div class="form-row">
                         <div class="form-group">
@@ -163,7 +172,8 @@
 
                     <div class="form-group">
                         <label for="branch">Branch/Department</label>
-                        <input type="text" id="branch" name="branch" placeholder="e.g., Computer Science, Mechanical, etc.">
+                        <input type="text" id="branch" name="branch"
+                            placeholder="e.g., Computer Science, Mechanical, etc.">
                     </div>
 
                     <div class="form-group">
@@ -198,12 +208,14 @@
 
                     <div class="form-group">
                         <label for="skills">Skills & Interests</label>
-                        <textarea id="skills" name="skills" rows="3" placeholder="Tell us about your skills, interests, or areas you'd like to learn more about..."></textarea>
+                        <textarea id="skills" name="skills" rows="3"
+                            placeholder="Tell us about your skills, interests, or areas you'd like to learn more about..."></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="experience">Previous Experience (Optional)</label>
-                        <textarea id="experience" name="experience" rows="3" placeholder="Any previous experience with entrepreneurship, competitions, or relevant projects..."></textarea>
+                        <textarea id="experience" name="experience" rows="3"
+                            placeholder="Any previous experience with entrepreneurship, competitions, or relevant projects..."></textarea>
                     </div>
 
                     <div class="form-group">
@@ -268,7 +280,7 @@
                 <h2>Why Express Your Interest?</h2>
                 <p>Get exclusive benefits by showing your interest early</p>
             </div>
-            
+
             <div class="benefits-grid">
                 <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="benefit-icon">
@@ -277,7 +289,7 @@
                     <h3>Early Notifications</h3>
                     <p>Be the first to know when registrations open for events you're interested in.</p>
                 </div>
-                
+
                 <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="benefit-icon">
                         <i class="fas fa-gift"></i>
@@ -285,7 +297,7 @@
                     <h3>Priority Access</h3>
                     <p>Get priority access to limited-seat events and exclusive workshops.</p>
                 </div>
-                
+
                 <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="benefit-icon">
                         <i class="fas fa-users"></i>
@@ -293,7 +305,7 @@
                     <h3>Network Building</h3>
                     <p>Connect with like-minded students and industry professionals.</p>
                 </div>
-                
+
                 <div class="benefit-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="benefit-icon">
                         <i class="fas fa-certificate"></i>
@@ -326,7 +338,7 @@
                 <div class="footer-section">
                     <h3>Contact</h3>
                     <ul>
-                                                    <li><a href="mailto:info@ecellucer.me">info@ecellucer.me</a></li>
+                        <li><a href="mailto:info@ecellucer.me">info@ecellucer.me</a></li>
                         <li>UCER Campus, Prayagraj</li>
                     </ul>
                 </div>
@@ -335,16 +347,17 @@
                         <h4>Follow Us</h4>
                         <p>Connect with us on social media for the latest updates!</p>
                         <div class="social-links-footer">
-                            <a href="https://wa.me/+919454645431" target="_blank" class="social-link-footer whatsapp" title="Message on WhatsApp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="https://www.instagram.com/ecellucer" target="_blank" class="social-link-footer instagram" title="Follow on Instagram">
+
+                            <a href="https://www.instagram.com/ecellucer" target="_blank"
+                                class="social-link-footer instagram" title="Follow on Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://www.linkedin.com/company/e-cell-ucer-prayagraj/" target="_blank" class="social-link-footer linkedin" title="Connect on LinkedIn">
+                            <a href="https://www.linkedin.com/company/e-cell-ucer-prayagraj/" target="_blank"
+                                class="social-link-footer linkedin" title="Connect on LinkedIn">
                                 <i class="fab fa-linkedin"></i>
                             </a>
-                            <a href="https://www.facebook.com/ecellucer" target="_blank" class="social-link-footer facebook" title="Like on Facebook">
+                            <a href="https://www.facebook.com/ecellucer" target="_blank"
+                                class="social-link-footer facebook" title="Like on Facebook">
                                 <i class="fab fa-facebook"></i>
                             </a>
                             <a href="mailto:info@ecellucer.me" class="social-link-footer email" title="Send Email">
@@ -355,7 +368,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 E-Cell UCER. All rights reserved.</p>
+                <p>&copy; 2026 E-Cell UCER. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -370,41 +383,41 @@
         });
 
         // Form submission handling
-        document.getElementById('interestForm').addEventListener('submit', function(e) {
+        document.getElementById('interestForm').addEventListener('submit', function (e) {
             e.preventDefault(); // Prevent default form submission
-            
+
             // Show loading state
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
             submitBtn.disabled = true;
-            
+
             // Get form data
             const formData = new FormData(this);
-            
+
             // Submit to FormSubmit
             fetch(this.action, {
                 method: 'POST',
                 body: formData
             })
-            .then(response => {
-                if (response.ok) {
-                    // Show success message
-                    showSuccessMessage('Thank you for your interest! We\'ll keep you updated with our upcoming events.');
-                    // Reset form
-                    this.reset();
-                } else {
+                .then(response => {
+                    if (response.ok) {
+                        // Show success message
+                        showSuccessMessage('Thank you for your interest! We\'ll keep you updated with our upcoming events.');
+                        // Reset form
+                        this.reset();
+                    } else {
+                        showErrorMessage('Something went wrong. Please try again.');
+                    }
+                })
+                .catch(error => {
                     showErrorMessage('Something went wrong. Please try again.');
-                }
-            })
-            .catch(error => {
-                showErrorMessage('Something went wrong. Please try again.');
-            })
-            .finally(() => {
-                // Reset button
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            });
+                })
+                .finally(() => {
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
         });
 
         function showSuccessMessage(message) {
@@ -420,15 +433,15 @@
                 <i class="fas fa-exclamation-circle"></i>
                 <span>${message}</span>
             `;
-            
+
             // Add to page
             document.body.appendChild(errorDiv);
-            
+
             // Show message
             setTimeout(() => {
                 errorDiv.classList.add('show');
             }, 100);
-            
+
             // Remove after 5 seconds
             setTimeout(() => {
                 errorDiv.classList.remove('show');
@@ -439,329 +452,329 @@
         }
     </script>
 </body>
-</html> 
 
-                                <input type="radio" id="other" name="source" value="other">
+</html>
 
-                                <label for="other">Other</label>
+<input type="radio" id="other" name="source" value="other">
 
-                            </div>
+<label for="other">Other</label>
 
-                        </div>
+</div>
 
-                    </div>
+</div>
 
-
-
-                    <div class="form-group">
-
-                        <div class="checkbox-item">
-
-                            <input type="checkbox" id="newsletter" name="newsletter" value="yes">
-
-                            <label for="newsletter">Subscribe to our newsletter for updates</label>
-
-                        </div>
-
-                    </div>
+</div>
 
 
 
-                    <div class="form-group">
+<div class="form-group">
 
-                        <div class="checkbox-item">
+    <div class="checkbox-item">
 
-                            <input type="checkbox" id="terms" name="terms" value="accepted" required>
+        <input type="checkbox" id="newsletter" name="newsletter" value="yes">
 
-                            <label for="terms">I agree to the terms and conditions *</label>
+        <label for="newsletter">Subscribe to our newsletter for updates</label>
 
-                        </div>
+    </div>
 
-                    </div>
+</div>
 
 
 
-                    <div class="form-actions">
+<div class="form-group">
 
-                        <button type="submit" class="btn btn-primary">
+    <div class="checkbox-item">
 
-                            <i class="fas fa-paper-plane"></i>
+        <input type="checkbox" id="terms" name="terms" value="accepted" required>
 
-                            Submit Interest
+        <label for="terms">I agree to the terms and conditions *</label>
 
-                        </button>
+    </div>
 
-                        <button type="reset" class="btn btn-secondary">
+</div>
 
-                            <i class="fas fa-redo"></i>
 
-                            Reset Form
 
-                        </button>
+<div class="form-actions">
 
-                    </div>
+    <button type="submit" class="btn btn-primary">
 
-                </form>
+        <i class="fas fa-paper-plane"></i>
+
+        Submit Interest
+
+    </button>
+
+    <button type="reset" class="btn btn-secondary">
+
+        <i class="fas fa-redo"></i>
+
+        Reset Form
+
+    </button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- Benefits Section -->
+
+<section class="benefits-section">
+
+    <div class="container">
+
+        <div class="section-header" data-aos="fade-up">
+
+            <h2>Why Express Your Interest?</h2>
+
+            <p>Get exclusive benefits by showing your interest early</p>
+
+        </div>
+
+
+
+        <div class="benefits-grid">
+
+            <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="benefit-icon">
+
+                    <i class="fas fa-bell"></i>
+
+                </div>
+
+                <h3>Early Notifications</h3>
+
+                <p>Be the first to know when registrations open for events you're interested in.</p>
+
+            </div>
+
+
+
+            <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="benefit-icon">
+
+                    <i class="fas fa-gift"></i>
+
+                </div>
+
+                <h3>Priority Access</h3>
+
+                <p>Get priority access to limited-seat events and exclusive workshops.</p>
+
+            </div>
+
+
+
+            <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+
+                <div class="benefit-icon">
+
+                    <i class="fas fa-users"></i>
+
+                </div>
+
+                <h3>Network Building</h3>
+
+                <p>Connect with like-minded students and industry professionals.</p>
+
+            </div>
+
+
+
+            <div class="benefit-card" data-aos="fade-up" data-aos-delay="400">
+
+                <div class="benefit-icon">
+
+                    <i class="fas fa-certificate"></i>
+
+                </div>
+
+                <h3>Skill Development</h3>
+
+                <p>Access to workshops and training sessions to enhance your skills.</p>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
 
-    <!-- Benefits Section -->
+<!-- Footer -->
 
-    <section class="benefits-section">
+<footer class="footer">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-header" data-aos="fade-up">
+        <div class="footer-content">
 
-                <h2>Why Express Your Interest?</h2>
+            <div class="footer-section">
 
-                <p>Get exclusive benefits by showing your interest early</p>
+                <h3>E-Cell UCER</h3>
 
-            </div>
-
-            
-
-            <div class="benefits-grid">
-
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
-
-                    <div class="benefit-icon">
-
-                        <i class="fas fa-bell"></i>
-
-                    </div>
-
-                    <h3>Early Notifications</h3>
-
-                    <p>Be the first to know when registrations open for events you're interested in.</p>
-
-                </div>
-
-                
-
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
-
-                    <div class="benefit-icon">
-
-                        <i class="fas fa-gift"></i>
-
-                    </div>
-
-                    <h3>Priority Access</h3>
-
-                    <p>Get priority access to limited-seat events and exclusive workshops.</p>
-
-                </div>
-
-                
-
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
-
-                    <div class="benefit-icon">
-
-                        <i class="fas fa-users"></i>
-
-                    </div>
-
-                    <h3>Network Building</h3>
-
-                    <p>Connect with like-minded students and industry professionals.</p>
-
-                </div>
-
-                
-
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="400">
-
-                    <div class="benefit-icon">
-
-                        <i class="fas fa-certificate"></i>
-
-                    </div>
-
-                    <h3>Skill Development</h3>
-
-                    <p>Access to workshops and training sessions to enhance your skills.</p>
-
-                </div>
+                <p>Accelerating entrepreneurial dreams and fostering innovation at UCER.</p>
 
             </div>
 
-        </div>
+            <div class="footer-section">
 
-    </section>
+                <h3>Quick Links</h3>
+
+                <ul>
+
+                    <li><a href="index.html">Home</a></li>
+
+                    <li><a href="about.html">About</a></li>
+
+                    <li><a href="initiatives.html">Initiatives</a></li>
+
+                    <li><a href="events.html">Events</a></li>
+
+                    <li><a href="team.html">Team</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-section">
+
+                <h3>Contact</h3>
+
+                <ul>
+
+                    <li><a href="mailto:info@ecellucer.me">info@ecellucer.me</a></li>
+
+                    <li>UCER Campus, Prayagraj</li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-section">
+
+                <div class="follow-us-section">
+
+                    <h4>Follow Us</h4>
+
+                    <p>Connect with us on social media for the latest updates!</p>
+
+                    <div class="social-links-footer">
 
 
 
-    <!-- Footer -->
+                        <a href="https://www.instagram.com/ecellucer" target="_blank"
+                            class="social-link-footer instagram" title="Follow on Instagram">
 
-    <footer class="footer">
+                            <i class="fab fa-instagram"></i>
 
-        <div class="container">
+                        </a>
 
-            <div class="footer-content">
+                        <a href="https://www.linkedin.com/company/e-cell-ucer-prayagraj/" target="_blank"
+                            class="social-link-footer linkedin" title="Connect on LinkedIn">
 
-                <div class="footer-section">
+                            <i class="fab fa-linkedin"></i>
 
-                    <h3>E-Cell UCER</h3>
+                        </a>
 
-                    <p>Accelerating entrepreneurial dreams and fostering innovation at UCER.</p>
+                        <a href="https://www.facebook.com/ecellucer" target="_blank" class="social-link-footer facebook"
+                            title="Like on Facebook">
 
-                </div>
+                            <i class="fab fa-facebook"></i>
 
-                <div class="footer-section">
+                        </a>
 
-                    <h3>Quick Links</h3>
+                        <a href="mailto:info@ecellucer.me" class="social-link-footer email" title="Send Email">
 
-                    <ul>
+                            <i class="fas fa-envelope"></i>
 
-                        <li><a href="index.html">Home</a></li>
-
-                        <li><a href="about.html">About</a></li>
-
-                        <li><a href="initiatives.html">Initiatives</a></li>
-
-                        <li><a href="events.html">Events</a></li>
-
-                        <li><a href="team.html">Team</a></li>
-
-                    </ul>
-
-                </div>
-
-                <div class="footer-section">
-
-                    <h3>Contact</h3>
-
-                    <ul>
-
-                                                    <li><a href="mailto:info@ecellucer.me">info@ecellucer.me</a></li>
-
-                        <li>UCER Campus, Prayagraj</li>
-
-                    </ul>
-
-                </div>
-
-                <div class="footer-section">
-
-                    <div class="follow-us-section">
-
-                        <h4>Follow Us</h4>
-
-                        <p>Connect with us on social media for the latest updates!</p>
-
-                        <div class="social-links-footer">
-
-                            <a href="https://wa.me/+919454645431" target="_blank" class="social-link-footer whatsapp" title="Message on WhatsApp">
-
-                                <i class="fab fa-whatsapp"></i>
-
-                            </a>
-
-                            <a href="https://www.instagram.com/ecellucer" target="_blank" class="social-link-footer instagram" title="Follow on Instagram">
-
-                                <i class="fab fa-instagram"></i>
-
-                            </a>
-
-                            <a href="https://www.linkedin.com/company/e-cell-ucer-prayagraj/" target="_blank" class="social-link-footer linkedin" title="Connect on LinkedIn">
-
-                                <i class="fab fa-linkedin"></i>
-
-                            </a>
-
-                            <a href="https://www.facebook.com/ecellucer" target="_blank" class="social-link-footer facebook" title="Like on Facebook">
-
-                                <i class="fab fa-facebook"></i>
-
-                            </a>
-
-                            <a href="mailto:info@ecellucer.me" class="social-link-footer email" title="Send Email">
-
-                                <i class="fas fa-envelope"></i>
-
-                            </a>
-
-                        </div>
+                        </a>
 
                     </div>
 
                 </div>
-
-            </div>
-
-            <div class="footer-bottom">
-
-                <p>&copy; 2024 E-Cell UCER. All rights reserved.</p>
 
             </div>
 
         </div>
 
-    </footer>
+        <div class="footer-bottom">
+
+            <p>&copy; 2026 E-Cell UCER. All rights reserved.</p>
+
+        </div>
+
+    </div>
+
+</footer>
 
 
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
-    <script>
+<script>
 
-        // Initialize AOS
+    // Initialize AOS
 
-        AOS.init({
+    AOS.init({
 
-            duration: 1000,
+        duration: 1000,
 
-            once: true
+        once: true
 
-        });
+    });
 
 
 
-        // Form submission handling
+    // Form submission handling
 
-        document.getElementById('interestForm').addEventListener('submit', function(e) {
+    document.getElementById('interestForm').addEventListener('submit', function (e) {
 
-            e.preventDefault(); // Prevent default form submission
+        e.preventDefault(); // Prevent default form submission
 
-            
 
-            // Show loading state
 
-            const submitBtn = this.querySelector('button[type="submit"]');
+        // Show loading state
 
-            const originalText = submitBtn.innerHTML;
+        const submitBtn = this.querySelector('button[type="submit"]');
 
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        const originalText = submitBtn.innerHTML;
 
-            submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
-            
+        submitBtn.disabled = true;
 
-            // Get form data
 
-            const formData = new FormData(this);
 
-            
+        // Get form data
 
-            // Submit to FormSubmit
+        const formData = new FormData(this);
 
-            fetch(this.action, {
 
-                method: 'POST',
 
-                body: formData
+        // Submit to FormSubmit
 
-            })
+        fetch(this.action, {
+
+            method: 'POST',
+
+            body: formData
+
+        })
 
             .then(response => {
 
@@ -799,29 +812,29 @@
 
             });
 
-        });
+    });
 
 
 
-        function showSuccessMessage(message) {
+    function showSuccessMessage(message) {
 
-            // Use the enhanced toast success message
+        // Use the enhanced toast success message
 
-            showToastSuccess(message, 2000);
+        showToastSuccess(message, 2000);
 
-        }
+    }
 
 
 
-        function showErrorMessage(message) {
+    function showErrorMessage(message) {
 
-            // Create error message element
+        // Create error message element
 
-            const errorDiv = document.createElement('div');
+        const errorDiv = document.createElement('div');
 
-            errorDiv.className = 'error-message';
+        errorDiv.className = 'error-message';
 
-            errorDiv.innerHTML = `
+        errorDiv.innerHTML = `
 
                 <i class="fas fa-exclamation-circle"></i>
 
@@ -829,42 +842,42 @@
 
             `;
 
-            
 
-            // Add to page
 
-            document.body.appendChild(errorDiv);
+        // Add to page
 
-            
+        document.body.appendChild(errorDiv);
 
-            // Show message
+
+
+        // Show message
+
+        setTimeout(() => {
+
+            errorDiv.classList.add('show');
+
+        }, 100);
+
+
+
+        // Remove after 5 seconds
+
+        setTimeout(() => {
+
+            errorDiv.classList.remove('show');
 
             setTimeout(() => {
 
-                errorDiv.classList.add('show');
+                document.body.removeChild(errorDiv);
 
-            }, 100);
+            }, 300);
 
-            
+        }, 5000);
 
-            // Remove after 5 seconds
+    }
 
-            setTimeout(() => {
-
-                errorDiv.classList.remove('show');
-
-                setTimeout(() => {
-
-                    document.body.removeChild(errorDiv);
-
-                }, 300);
-
-            }, 5000);
-
-        }
-
-    </script>
+</script>
 
 </body>
 
-</html> 
+</html>
