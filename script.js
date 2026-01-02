@@ -25,7 +25,7 @@ if (isMobile) {
 function fadeInSections() {
     const sections = document.querySelectorAll('section');
     const cards = document.querySelectorAll('.initiative-snapshot-card, .event-highlight-card, .team-preview-member');
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -36,20 +36,20 @@ function fadeInSections() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
-    
+
     sections.forEach(section => {
         observer.observe(section);
     });
-    
+
     cards.forEach(card => {
         observer.observe(card);
     });
 }
 
 // Initialize fade effects
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     fadeInSections();
-    
+
     // Add staggered animation to cards
     const cards = document.querySelectorAll('.initiative-snapshot-card, .event-highlight-card, .team-preview-member');
     cards.forEach((card, index) => {
@@ -66,12 +66,12 @@ window.addEventListener('load', () => {
             loading.style.display = 'none';
         }, 500);
     }
-    
+
     // Optimize images for mobile
     if (isMobile) {
         optimizeImagesForMobile();
     }
-    
+
     // Initialize lazy loading
     initializeLazyLoading();
 });
@@ -99,7 +99,7 @@ function initializeLazyLoading() {
             }
         });
     });
-    
+
     images.forEach(img => imageObserver.observe(img));
 }
 
@@ -109,13 +109,13 @@ let lastScrollTop = 0;
 
 window.addEventListener('scroll', () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
+
     if (scrollTop > 100) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
-    
+
     lastScrollTop = scrollTop;
 }, { passive: true });
 
@@ -123,7 +123,7 @@ window.addEventListener('scroll', () => {
 window.addEventListener('resize', debounce(() => {
     const newIsMobile = window.innerWidth < 768;
     const newIsTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
-    
+
     // Update mobile state
     if (newIsMobile !== isMobile) {
         location.reload(); // Reload for better mobile/desktop experience
@@ -150,15 +150,17 @@ const navMenu = document.querySelector('.nav-menu');
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
-    
+
     // Prevent body scroll when menu is open
     if (navMenu.classList.contains('active')) {
         document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden'; // Ensure lock on html element too
         // Add focus trap for accessibility
         const firstLink = navMenu.querySelector('.nav-link');
         if (firstLink) firstLink.focus();
     } else {
         document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
     }
 });
 
@@ -170,17 +172,17 @@ document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
             e.stopPropagation(); // Prevent event bubbling
             const dropdown = toggle.closest('.dropdown');
             const isActive = dropdown.classList.contains('active');
-            
+
             // Close all other dropdowns
             document.querySelectorAll('.dropdown').forEach(d => {
                 if (d !== dropdown) {
                     d.classList.remove('active');
                 }
             });
-            
+
             // Toggle current dropdown
             dropdown.classList.toggle('active');
-            
+
             // Add smooth animation
             if (!isActive) {
                 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
@@ -211,7 +213,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
         if (link.classList.contains('dropdown-toggle')) {
             return;
         }
-        
+
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
         document.body.style.overflow = '';
@@ -239,7 +241,7 @@ knowMoreBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
         const eventType = btn.getAttribute('data-event');
-        
+
         // Show the appropriate modal content
         const modalContent = document.getElementById(`${eventType}-content`);
         if (modalContent) {
@@ -247,14 +249,14 @@ knowMoreBtns.forEach(btn => {
             document.querySelectorAll('.event-modal-content').forEach(content => {
                 content.style.display = 'none';
             });
-            
+
             // Show the specific content
             modalContent.style.display = 'block';
-            
+
             // Show modal
             eventModal.classList.add('show');
             document.body.style.overflow = 'hidden';
-            
+
             // Handle iframe loading for registration form
             handleIframeLoad();
         }
@@ -265,7 +267,7 @@ knowMoreBtns.forEach(btn => {
 function handleIframeLoad() {
     const iframe = document.querySelector('.registration-form iframe');
     const fallback = document.getElementById('form-fallback');
-    
+
     if (iframe && fallback) {
         // Set a timeout to show fallback if iframe doesn't load within 3 seconds
         setTimeout(() => {
@@ -312,7 +314,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (target) {
             const offset = window.innerWidth <= 768 ? 80 : 100;
             const targetPosition = target.offsetTop - offset;
-            
+
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
@@ -324,14 +326,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Mobile Touch Optimizations
 if ('ontouchstart' in window) {
     // Optimize scroll performance on mobile
-    
+
     // Optimize scroll performance on mobile
     let ticking = false;
     function updateScroll() {
         // Mobile-specific scroll optimizations
         ticking = false;
     }
-    
+
     window.addEventListener('scroll', () => {
         if (!ticking) {
             requestAnimationFrame(updateScroll);
@@ -390,7 +392,7 @@ function updateParallax() {
         const speed = 0.3 + (index * 0.1);
         element.style.transform = `translateY(${rate * speed}px)`;
     });
-    
+
     ticking = false;
 }
 
@@ -409,14 +411,14 @@ if (typingText) {
         'Dream Big',
         'Act Now!'
     ];
-    
+
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    
+
     const typeWriter = () => {
         const currentText = texts[textIndex];
-        
+
         if (isDeleting) {
             typingText.textContent = currentText.substring(0, charIndex - 1);
             charIndex--;
@@ -424,13 +426,13 @@ if (typingText) {
             typingText.textContent = currentText.substring(0, charIndex + 1);
             charIndex++;
         }
-        
+
         let typeSpeed = 100;
-        
+
         if (isDeleting) {
             typeSpeed /= 2;
         }
-        
+
         if (!isDeleting && charIndex === currentText.length) {
             typeSpeed = 2000; // Pause at end
             isDeleting = true;
@@ -439,10 +441,10 @@ if (typingText) {
             textIndex = (textIndex + 1) % texts.length;
             typeSpeed = 500; // Pause before next word
         }
-        
+
         setTimeout(typeWriter, typeSpeed);
     };
-    
+
     // Start typing animation after a delay
     setTimeout(typeWriter, 1000);
 }
@@ -453,7 +455,7 @@ function showSuccessMessage(elementId, message) {
     if (successElement) {
         successElement.style.display = 'flex';
         successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
+
         // Hide success message after 5 seconds
         setTimeout(() => {
             successElement.style.display = 'none';
@@ -480,7 +482,7 @@ function showToastSuccess(message, duration = 2000) {
     if (existingToast) {
         existingToast.remove();
     }
-    
+
     // Create toast element
     const toast = document.createElement('div');
     toast.className = 'toast-success-message';
@@ -491,47 +493,47 @@ function showToastSuccess(message, duration = 2000) {
             <i class="fas fa-times"></i>
         </button>
     `;
-    
+
     // Add to body
     document.body.appendChild(toast);
-    
+
     // Show animation
     setTimeout(() => {
         toast.classList.add('show');
     }, 10);
-    
+
     // Swipe functionality
     let startX = 0;
     let currentX = 0;
     let isDragging = false;
-    
+
     // Touch events for mobile
     toast.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
         isDragging = true;
         toast.style.cursor = 'grabbing';
     });
-    
+
     toast.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
         e.preventDefault();
         currentX = e.touches[0].clientX;
         const diffX = currentX - startX;
-        
+
         // Limit the drag distance
         if (Math.abs(diffX) > 50) {
             toast.style.transform = `translateX(${diffX}px)`;
             toast.style.opacity = Math.max(0, 1 - Math.abs(diffX) / 200);
         }
     });
-    
+
     toast.addEventListener('touchend', (e) => {
         if (!isDragging) return;
         isDragging = false;
         toast.style.cursor = 'grab';
-        
+
         const diffX = currentX - startX;
-        
+
         if (Math.abs(diffX) > 100) {
             // Swipe threshold reached - hide toast
             if (diffX > 0) {
@@ -539,7 +541,7 @@ function showToastSuccess(message, duration = 2000) {
             } else {
                 toast.classList.add('swipe-left');
             }
-            
+
             setTimeout(() => {
                 toast.remove();
             }, 300);
@@ -549,39 +551,39 @@ function showToastSuccess(message, duration = 2000) {
             toast.style.opacity = '';
         }
     });
-    
+
     // Mouse events for desktop
     toast.addEventListener('mousedown', (e) => {
         startX = e.clientX;
         isDragging = true;
         toast.style.cursor = 'grabbing';
     });
-    
+
     toast.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         currentX = e.clientX;
         const diffX = currentX - startX;
-        
+
         if (Math.abs(diffX) > 50) {
             toast.style.transform = `translateX(${diffX}px)`;
             toast.style.opacity = Math.max(0, 1 - Math.abs(diffX) / 200);
         }
     });
-    
+
     toast.addEventListener('mouseup', (e) => {
         if (!isDragging) return;
         isDragging = false;
         toast.style.cursor = 'grab';
-        
+
         const diffX = currentX - startX;
-        
+
         if (Math.abs(diffX) > 100) {
             if (diffX > 0) {
                 toast.classList.add('swipe-right');
             } else {
                 toast.classList.add('swipe-left');
             }
-            
+
             setTimeout(() => {
                 toast.remove();
             }, 300);
@@ -590,7 +592,7 @@ function showToastSuccess(message, duration = 2000) {
             toast.style.opacity = '';
         }
     });
-    
+
     // Auto-hide after duration
     setTimeout(() => {
         if (toast.parentElement) {
@@ -602,99 +604,99 @@ function showToastSuccess(message, duration = 2000) {
             }, 300);
         }
     }, duration);
-    
+
     return toast;
 }
 
 // Contact Form Handling with AJAX to prevent page redirect
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', function (e) {
         e.preventDefault(); // Prevent default form submission
-        
+
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
-        
+
         // Get form data
         const formData = new FormData(this);
-        
+
         // Submit form using fetch
         fetch(this.action, {
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            if (response.ok) {
-                // Show enhanced toast success message
-                showToastSuccess('Thank you! Your message has been sent successfully.', 2000);
-                
-                // Reset form
-                this.reset();
-                
+            .then(response => {
+                if (response.ok) {
+                    // Show enhanced toast success message
+                    showToastSuccess('Thank you! Your message has been sent successfully.', 2000);
+
+                    // Reset form
+                    this.reset();
+
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Show error message or fallback
+                alert('There was an error sending your message. Please try again.');
+
                 // Reset button
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-            } else {
-                throw new Error('Form submission failed');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Show error message or fallback
-            alert('There was an error sending your message. Please try again.');
-            
-            // Reset button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        });
+            });
     });
 }
 
 // Newsletter Form Handling with AJAX to prevent page redirect
 const newsletterForm = document.getElementById('newsletterForm');
 if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
+    newsletterForm.addEventListener('submit', function (e) {
         e.preventDefault(); // Prevent default form submission
-        
+
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
         submitBtn.disabled = true;
-        
+
         // Get form data
         const formData = new FormData(this);
-        
+
         // Submit form using fetch
         fetch(this.action, {
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            if (response.ok) {
-                // Show enhanced toast success message
-                showToastSuccess('Thank you! You\'ve been subscribed to our newsletter.', 2000);
-                
-                // Reset form
-                this.reset();
-                
+            .then(response => {
+                if (response.ok) {
+                    // Show enhanced toast success message
+                    showToastSuccess('Thank you! You\'ve been subscribed to our newsletter.', 2000);
+
+                    // Reset form
+                    this.reset();
+
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Show error message or fallback
+                alert('There was an error subscribing to the newsletter. Please try again.');
+
                 // Reset button
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-            } else {
-                throw new Error('Form submission failed');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Show error message or fallback
-            alert('There was an error subscribing to the newsletter. Please try again.');
-            
-            // Reset button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        });
+            });
     });
 }
 
@@ -705,16 +707,16 @@ const existingContactForm = document.querySelector('.contact-form form');
 if (existingContactForm && !existingContactForm.id) {
     existingContactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         // Show success message
         const submitBtn = existingContactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Message Sent!';
         submitBtn.style.background = '#28a745';
-        
+
         // Reset form
         existingContactForm.reset();
-        
+
         // Reset button after 3 seconds
         setTimeout(() => {
             submitBtn.textContent = originalText;
@@ -725,25 +727,25 @@ if (existingContactForm && !existingContactForm.id) {
 
 // Enhanced Ripple Effect for Buttons with Mobile Support
 document.querySelectorAll('.btn').forEach(button => {
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
         const ripple = document.createElement('span');
         const rect = this.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
-        
+
         // Handle both mouse and touch events
         const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : rect.width / 2);
         const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : rect.height / 2);
-        
+
         const x = clientX - rect.left - size / 2;
         const y = clientY - rect.top - size / 2;
-        
+
         ripple.style.width = ripple.style.height = size + 'px';
         ripple.style.left = x + 'px';
         ripple.style.top = y + 'px';
         ripple.classList.add('ripple');
-        
+
         this.appendChild(ripple);
-        
+
         setTimeout(() => {
             ripple.remove();
         }, 600);
@@ -756,22 +758,22 @@ document.querySelectorAll('.btn').forEach(button => {
 document.querySelectorAll('.process-card, .initiative-card, .event-card, .team-member').forEach(card => {
     // Only add hover effects on devices that support hover
     if (window.matchMedia('(hover: hover)').matches) {
-        card.addEventListener('mouseenter', function() {
+        card.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-10px) scale(1.02)';
         });
-        
-        card.addEventListener('mouseleave', function() {
+
+        card.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0) scale(1)';
         });
     }
-    
+
     // Add touch feedback for mobile
     if ('ontouchstart' in window) {
-        card.addEventListener('touchstart', function() {
+        card.addEventListener('touchstart', function () {
             this.style.transform = 'scale(0.98)';
         });
-        
-        card.addEventListener('touchend', function() {
+
+        card.addEventListener('touchend', function () {
             this.style.transform = '';
         });
     }
@@ -803,7 +805,7 @@ const createParticle = () => {
     if (window.innerWidth <= 768 && Math.random() > 0.3) {
         return;
     }
-    
+
     const particle = document.createElement('div');
     particle.style.cssText = `
         position: fixed;
@@ -814,12 +816,12 @@ const createParticle = () => {
         pointer-events: none;
         z-index: 1;
     `;
-    
+
     particle.style.left = Math.random() * window.innerWidth + 'px';
     particle.style.top = window.innerHeight + 'px';
-    
+
     document.body.appendChild(particle);
-    
+
     const animation = particle.animate([
         { transform: 'translateY(0px)', opacity: 1 },
         { transform: `translateY(-${window.innerHeight}px)`, opacity: 0 }
@@ -827,7 +829,7 @@ const createParticle = () => {
         duration: Math.random() * 3000 + 2000,
         easing: 'linear'
     });
-    
+
     animation.onfinish = () => {
         particle.remove();
     };
@@ -840,7 +842,7 @@ setInterval(createParticle, particleInterval);
 // Performance optimization: Throttle scroll events
 function throttle(func, limit) {
     let inThrottle;
-    return function() {
+    return function () {
         const args = arguments;
         const context = this;
         if (!inThrottle) {
@@ -862,30 +864,30 @@ window.addEventListener('scroll', throttledScrollHandler, { passive: true });
 if (window.innerWidth <= 768) {
     // Reduce animation complexity on mobile
     document.documentElement.style.setProperty('--animation-duration', '0.3s');
-    
+
     // Optimize images for mobile
     const images = document.querySelectorAll('img');
     images.forEach(img => {
         img.setAttribute('loading', 'lazy');
     });
-    
+
     // Add mobile-specific touch gestures
     let touchStartY = 0;
     let touchEndY = 0;
-    
+
     document.addEventListener('touchstart', (e) => {
         touchStartY = e.touches[0].clientY;
     }, { passive: true });
-    
+
     document.addEventListener('touchend', (e) => {
         touchEndY = e.changedTouches[0].clientY;
         handleSwipe();
     }, { passive: true });
-    
+
     function handleSwipe() {
         const swipeThreshold = 50;
         const diff = touchStartY - touchEndY;
-        
+
         if (Math.abs(diff) > swipeThreshold) {
             // Handle swipe gestures if needed
         }
@@ -902,25 +904,25 @@ function closeBanner() {
         setTimeout(() => {
             banner.style.display = 'none';
         }, 500);
-        
+
         // Store in localStorage so it doesn't show again in this session
         localStorage.setItem('bannerClosed', 'true');
     }
 }
 
 // Banner visibility control - ONLY on home page with scroll behavior
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const currentPage = window.location.pathname;
     const isHomePage = currentPage === '/' || currentPage === '/index.html' || currentPage === '';
-    
+
     console.log('Current page:', currentPage);
     console.log('Is home page:', isHomePage);
-    
+
     // ONLY add home-page class if it's actually the home page
     if (isHomePage) {
         document.body.classList.add('home-page');
         console.log('Added home-page class to body');
-        
+
         // Only handle banner on home page
         const banner = document.getElementById('newsBanner');
         if (banner) {
@@ -930,14 +932,14 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 banner.style.display = 'block';
                 console.log('Banner shown - home page and not closed');
-                
+
                 // Add scroll-based visibility
                 let lastScrollTop = 0;
                 const scrollThreshold = 100; // Hide after 100px scroll
-                
-                window.addEventListener('scroll', function() {
+
+                window.addEventListener('scroll', function () {
                     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    
+
                     if (scrollTop > scrollThreshold) {
                         // Hide banner when scrolled down
                         banner.style.opacity = '0';
@@ -949,7 +951,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         banner.style.transform = 'translateX(0)';
                         banner.style.pointerEvents = 'auto';
                     }
-                    
+
                     lastScrollTop = scrollTop;
                 }, { passive: true });
             }
@@ -962,14 +964,14 @@ document.addEventListener('DOMContentLoaded', function() {
             banner.style.display = 'none';
         }
     }
-    
+
     // Add click functionality to scroll arrow
     const scrollArrow = document.querySelector('.scroll-arrow');
     if (scrollArrow) {
-        scrollArrow.addEventListener('click', function() {
+        scrollArrow.addEventListener('click', function () {
             const aboutSection = document.getElementById('about');
             if (aboutSection) {
-                aboutSection.scrollIntoView({ 
+                aboutSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
@@ -1022,105 +1024,105 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Volunteer Form Handling
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const volunteerForm = document.getElementById('volunteerForm');
     const volunteerSuccessMessage = document.getElementById('volunteerSuccessMessage');
-    
+
     if (volunteerForm) {
-        volunteerForm.addEventListener('submit', function(e) {
+        volunteerForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const submitButton = volunteerForm.querySelector('button[type="submit"]');
             const originalText = submitButton.innerHTML;
-            
+
             // Set loading state
             setButtonLoading(submitButton, true);
-            
+
             // Simulate form submission (replace with actual form handling)
             setTimeout(() => {
                 // Hide form and show success message
                 volunteerForm.style.display = 'none';
                 volunteerSuccessMessage.style.display = 'block';
-                
+
                 // Reset button
                 setButtonLoading(submitButton, false);
                 submitButton.innerHTML = originalText;
-                
+
                 // Scroll to success message
-                volunteerSuccessMessage.scrollIntoView({ 
+                volunteerSuccessMessage.scrollIntoView({
                     behavior: 'smooth',
                     block: 'center'
                 });
-                
+
                 // Reset form after showing success message
                 setTimeout(() => {
                     volunteerForm.reset();
                     volunteerForm.style.display = 'block';
                     volunteerSuccessMessage.style.display = 'none';
                 }, 5000);
-                
+
             }, 2000);
         });
     }
 });
 
 // Partner Form Handling
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const partnerForm = document.getElementById('partnerForm');
     const partnerSuccessMessage = document.getElementById('partnerSuccessMessage');
-    
+
     if (partnerForm) {
-        partnerForm.addEventListener('submit', function(e) {
+        partnerForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const submitButton = partnerForm.querySelector('button[type="submit"]');
             const originalText = submitButton.innerHTML;
-            
+
             // Set loading state
             setButtonLoading(submitButton, true);
-            
+
             // Simulate form submission (replace with actual form handling)
             setTimeout(() => {
                 // Hide form and show success message
                 partnerForm.style.display = 'none';
                 partnerSuccessMessage.style.display = 'block';
-                
+
                 // Reset button
                 setButtonLoading(submitButton, false);
                 submitButton.innerHTML = originalText;
-                
+
                 // Scroll to success message
-                partnerSuccessMessage.scrollIntoView({ 
+                partnerSuccessMessage.scrollIntoView({
                     behavior: 'smooth',
                     block: 'center'
                 });
-                
+
                 // Reset form after showing success message
                 setTimeout(() => {
                     partnerForm.reset();
                     partnerForm.style.display = 'block';
                     partnerSuccessMessage.style.display = 'none';
                 }, 5000);
-                
+
             }, 2000);
         });
     }
 });
 
 // Smooth scrolling for anchor links
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    
+
     anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
-            
+
             if (targetElement) {
                 const offsetTop = targetElement.offsetTop - 100; // Account for fixed navbar
-                
+
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -1131,38 +1133,38 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Image Popup Functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const imagePopup = document.getElementById('imagePopup');
     const popupImage = document.getElementById('popupImage');
     const imagePopupClose = document.getElementById('imagePopupClose');
     const galleryImages = document.querySelectorAll('.picture-item img');
-    
+
     // Open popup when clicking on gallery images
     galleryImages.forEach(img => {
-        img.addEventListener('click', function() {
+        img.addEventListener('click', function () {
             popupImage.src = this.src;
             popupImage.alt = this.alt;
             imagePopup.classList.add('show');
             document.body.style.overflow = 'hidden'; // Prevent background scroll
         });
     });
-    
+
     // Close popup when clicking close button
-    imagePopupClose.addEventListener('click', function() {
+    imagePopupClose.addEventListener('click', function () {
         imagePopup.classList.remove('show');
         document.body.style.overflow = ''; // Restore background scroll
     });
-    
+
     // Close popup when clicking overlay
-    imagePopup.addEventListener('click', function(e) {
+    imagePopup.addEventListener('click', function (e) {
         if (e.target === imagePopup || e.target.classList.contains('image-popup-overlay')) {
             imagePopup.classList.remove('show');
             document.body.style.overflow = '';
         }
     });
-    
+
     // Close popup with Escape key
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && imagePopup.classList.contains('show')) {
             imagePopup.classList.remove('show');
             document.body.style.overflow = '';
